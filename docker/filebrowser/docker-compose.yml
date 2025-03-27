@@ -1,0 +1,13 @@
+services:
+  filebrowser:
+    image: filebrowser/filebrowser:s6
+    container_name: filebrowser
+    restart: always
+    volumes:
+      - /opt/filebrowser/filebrowser.db:/database/filebrowser.db
+      - /opt/filebrowser/files:/srv
+    ports:
+      - 8080:80
+    environment:
+      - PUID=${UID}
+      - PGID=${GID}

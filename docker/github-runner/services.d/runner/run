@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+s6-svwait -U /etc/services.d/docker
+exec run.sh
