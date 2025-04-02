@@ -2,10 +2,12 @@
 
 set -e
 
+[ -z $TMPDIR ] && [ -d /tmp ] && TMPDIR="/tmp"
+
 keybox="$1"
 
 if [ ! -f "$keybox" ]; then
-    keybox="/tmp/keybox.xml"
+    keybox="$TMPDIR/keybox.xml"
     if [[ "$1" == "http"* ]]; then
         curl -sfL "$1" -o "$keybox"
     else
@@ -15,14 +17,14 @@ fi
 
 if [ ! -f "$keybox" ] || [ ! -s "$keybox" ]; then
     echo "Keybox empty or not found. Exiting..."
-    rm -f /tmp/keybox.xml
+    rm -f $TMPDIR/keybox.xml
     exit 1
 fi
 
 extractPriKey() {
-    xmlstarlet sel -t -m "//Key[@algorithm=\"$1\"]" -v "PrivateKey" "$keybox" | sed 's/^[[:space:]]*//' > /tmp/prikey
-    openssl pkcs8 -topk8 -nocrypt -in /tmp/prikey | grep -v "PRIVATE KEY" | sed ':a;N;$!ba;s/\n//g'
-    rm -f /tmp/prikey
+    xmlstarlet sel -t -m "//Key[@algorithm=\"$1\"]" -v "PrivateKey" "$keybox" | sed 's/^[[:space:]]*//' > $TMPDIR/prikey
+    openssl pkcs8 -topk8 -nocrypt -in $TMPDIR/prikey | grep -v "PRIVATE KEY" | sed ':a;N;$!ba;s/\n//g'
+    rm -f $TMPDIR/prikey
 }
 
 extractCert() {
@@ -46,4 +48,4 @@ echo "+            public static final String CERTIFICATE_4 = \"$(extractCert 'r
 echo "+        }"
 echo "+    }"
 
-rm -f /tmp/keybox.xml
+rm -f $TMPDIR/keybox.xml

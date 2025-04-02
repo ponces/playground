@@ -2,7 +2,9 @@
 
 set -e
 
-tmpDir="/tmp/tdupdate"
+[ -z $TMPDIR ] && [ -d /tmp ] && TMPDIR="/tmp"
+
+tmpDir="$TMPDIR/tdupdate"
 baseBranch="android-15.0"
 oldBranch="${baseBranch}.0_r9"
 newBranch="${baseBranch}.0_r21"

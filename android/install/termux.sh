@@ -27,7 +27,7 @@ apt update
 apt upgrade -y
 apt install -y root-repo tur-repo x11-repo
 apt install -y binutils code-server file git iproute2 jq keychain ncurses-utils nodejs-lts \
-               openssh openssl-tool python termux-services tsu unzip wget yarn zip zsh
+               openssh openssl-tool python termux-services tsu unzip wget yarn zip
 
 mkdir -p $PREFIX/var/service/code/log
 touch $PREFIX/var/service/code/down
@@ -37,24 +37,19 @@ chmod +x $PREFIX/var/service/code/run
 ln -sf $PREFIX/share/termux-services/svlogger $PREFIX/var/service/code/log/run
 
 if [ ! -d $HOME/.oh-my-zsh ]; then
-    yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-    git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-    echo "source $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" >> $HOME/.zshrc
-    echo "source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> $HOME/.zshrc
-    echo "source $HOME/.bash_profile" >> $HOME/.zshrc
-    chsh -s zsh
+    curl -sfL https://go.ponces.xyz/zsh | bash
 fi
 
-git config --global user.name "Alberto Ponces"
-git config --global user.email "ponces26@gmail.com"
-git config --global core.editor "nano"
+git config --global alias.pushfwl "push --force-with-lease"
 git config --global color.ui "auto"
+git config --global core.editor "nano"
+git config --global fetch.prune true
+git config --global fetch.pruneTags true
 git config --global pull.rebase true
 git config --global push.autoSetupRemote true
 git config --global rebase.autosquash true
-git config --global oh-my-zsh.hide-dirty 1
-git config --global alias.pushfwl "push --force-with-lease"
+git config --global user.name "Alberto Ponces"
+git config --global user.email "ponces26@gmail.com"
 
 mkdir -p $HOME/.ssh
 [ -f $HOME/storage/downloads/id_github ] && cp $HOME/storage/downloads/id_github $HOME/.ssh

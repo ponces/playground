@@ -2,7 +2,9 @@
 
 set -e
 
-tee /tmp/checkKB.py >/dev/null << 'EOF'
+[ -z $TMPDIR ] && [ -d /tmp ] && TMPDIR="/tmp"
+
+tee $TMPDIR/checkKB.py >/dev/null << 'EOF'
 import requests
 import sys
 import xml.etree.ElementTree as ET
@@ -39,7 +41,7 @@ EOF
 keybox="$1"
 
 if [ ! -f "$keybox" ]; then
-    keybox="/tmp/keybox.xml"
+    keybox="$TMPDIR/keybox.xml"
     if [[ "$1" == "http"* ]]; then
         curl -sfL "$1" -o "$keybox"
     else
@@ -49,9 +51,9 @@ fi
 
 if [ ! -f "$keybox" ] || [ ! -s "$keybox" ]; then
     echo "Keybox empty or not found. Exiting..."
-    rm -f /tmp/keybox.xml
+    rm -f $TMPDIR/keybox.xml
 fi
 
-python /tmp/checkKB.py "$keybox"
-rm -f /tmp/checkKB.py
-rm -f /tmp/keybox.xml
+python $TMPDIR/checkKB.py "$keybox"
+rm -f $TMPDIR/checkKB.py
+rm -f $TMPDIR/keybox.xml
