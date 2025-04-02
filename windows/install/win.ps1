@@ -8,24 +8,26 @@ function Update-EnvironmentPath {
     [System.Environment]::SetEnvironmentVariable("PATH", $NewPath, "User")
 }
 
-winget install AgileBits.1Password Canonical.Ubuntu Docker.DockerCLI Docker.DockerCompose `
-               Fortinet.FortiClientVPN Git.Git Google.Chrome `
-               Google.PlatformTools Hashicorp.Vagrant JanDeDobbeleer.OhMyPosh M2Team.NanaZip `
+winget install AgileBits.1Password Canonical.Ubuntu dbeaver.dbeaver Docker.DockerCLI Docker.DockerCompose `
+               Fortinet.FortiClientVPN Genymobile.scrcpy Git.Git Google.Chrome Google.PlatformTools `
+               Hashicorp.Vagrant Helm.Helm JanDeDobbeleer.OhMyPosh M2Team.NanaZip `
                Microsoft.DotNet.SDK.3_1 Microsoft.DotNet.SDK.6 Microsoft.DotNet.SDK.8 `
-               Microsoft.PowerShell Microsoft.Teams Microsoft.Office `
-               Microsoft.SQLServerManagementStudio Microsoft.VisualStudioCode `
-               okibcn.nano Oracle.JDK.17 RedHat.OpenShift-Client Starpine.Screenbox `
-               WinDirStat.WinDirStat WinMerge.WinMerge version-fox.vfox ZhornSoftware.Caffeine
+               Microsoft.PowerShell Microsoft.Teams Microsoft.Office Microsoft.VisualStudioCode `
+               OBSProject.OBSStudio okibcn.nano RedHat.OpenShift-Client RedHat.Podman RedHat.Podman-Desktop `
+               Starpine.Screenbox WinDirStat.WinDirStat WinMerge.WinMerge version-fox.vfox ZhornSoftware.Caffeine
 
 # Install vfox plugins
 Invoke-Expression "$(vfox activate pwsh)"
-vfox add gradle java nodejs
-vfox install gradle@8.6 java@17 nodejs@20
-vfox use -g gradle@8.6 java@17 nodejs@20
+vfox add gradle java kubectl nodejs
+vfox install gradle@8.6 java@17 kubectl@1.30.2 nodejs@20
+vfox use -g gradle@8.6
+vfox use -g java@17
+vfox use -g kubectl@1.30.2
+vfox use -g nodejs@20
 
 # Install utils
-git clone https://gist.github.com/9b17662d281c734b7977d4ea48959953.git $env:APPDATA\apktool
-git clone https://github.com/dahlbyk/posh-git $env:APPDATA\posh-git
+git clone -q https://gist.github.com/9b17662d281c734b7977d4ea48959953.git $env:APPDATA\apktool
+git clone -q https://github.com/dahlbyk/posh-git $env:APPDATA\posh-git
 oh-my-posh font install CascadiaCode
 
 # Update path
