@@ -19,3 +19,5 @@ if [ -f /etc/pam.d/chsh ]; then
     sudo sed 's/required/sufficient/g' -i /etc/pam.d/chsh
     sudo chsh -s $(which zsh) $(whoami)
 fi
+
+zsh
