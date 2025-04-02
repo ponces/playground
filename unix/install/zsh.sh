@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 rm -rf $HOME/.zshrc*
 rm -rf $HOME/.oh-my-zsh
 sudo apt install -y zsh

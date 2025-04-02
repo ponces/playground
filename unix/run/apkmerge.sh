@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 curl -sfL https://gist.github.com/ponces/530da4ddaebef8ec3a6840ad9fe6be00/raw/apkmd.sh | bash -s -- "$1" "$2"
 downFile="$(ls -Art | tail -n 1)"
 

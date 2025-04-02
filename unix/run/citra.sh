@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 keybox="$1"
 
 if [ -z "$keybox" ]; then

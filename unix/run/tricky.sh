@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 key="$(curl -sfL https://raw.githubusercontent.com/KOWX712/Tricky-Addon-Update-Target-List/main/.extra | xxd -r -p | base64 -d)"
 
 if [ -z "$key" ]; then

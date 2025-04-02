@@ -1,5 +1,7 @@
 #!/system/bin/sh
 
+set -e
+
 [ -z $DEBUG ] && DEBUG=true
 [ -z $TMPDIR ] && [ -d /tmp ] && TMPDIR="/tmp"
 

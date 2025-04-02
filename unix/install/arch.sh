@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 sudo pacman -Syyu --noconfirm
 sudo pacman -S --noconfirm adapta-gtk-theme android-tools android-udev chrome-gnome-shell \
                            gdm gimp gparted htop npm steam tlp vlc youtube-dl

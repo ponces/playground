@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 tee /tmp/checkKB.py >/dev/null << 'EOF'
 import requests
 import sys

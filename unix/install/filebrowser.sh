@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 NAMESPACE="mesenv"
 
 kubectl scale deployments -n $NAMESPACE filebrowser --replicas=0
