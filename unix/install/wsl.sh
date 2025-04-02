@@ -2,6 +2,8 @@
 
 set -e
 
+[ "$(id -u)" -ne 0 ] && SUDO="sudo" || SUDO=""
+
 WIN_HOME_RAW="$(cmd.exe /c "<nul set /p=%UserProfile%" 2>/dev/null)"
 WIN_HOME="$(wslpath $WIN_HOME_RAW)"
 
@@ -23,6 +25,6 @@ EOF
 
 rm -f $HOME/.screenrc
 
-printf "[boot]\nsystemd = true\n\n[network]\nhostname = ubuntu\n" | sudo tee /etc/wsl.conf
+printf "[boot]\nsystemd = true\n\n[network]\nhostname = ubuntu\n" | $SUDO tee /etc/wsl.conf
 
 git config --global core.sshCommand "ssh.exe"
