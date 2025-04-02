@@ -16,6 +16,8 @@ echo "source $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggest
 git clone -q --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 echo "source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> $HOME/.zshrc
 
+sed -i 's/^plugins.*/plugins=(ansible docker dotnet git git-commit git-auto-fetch gradle helm kubectl repo ssh)/' $HOME/.zshrc
+
 touch $HOME/.bash_profile
 echo "source $HOME/.bash_profile" >> $HOME/.zshrc
 
