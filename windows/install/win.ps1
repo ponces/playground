@@ -3,27 +3,26 @@ $ErrorActionPreference = 'Stop'
 
 function Update-EnvironmentPath {
     param($Directory)
-    $CurrentPATH = [System.Environment]::GetEnvironmentVariable("PATH", "User") -Split ";"
-    $NewPATH = ($CurrentPATH + $Directory) -Join ";"
-    [System.Environment]::SetEnvironmentVariable("PATH", $NewPath, "User")
+    $CurrentPATH = [Environment]::GetEnvironmentVariable("Path", "User")
+    $NewPATH = $Directory + ";" + $CurrentPATH
+    [Environment]::SetEnvironmentVariable("Path", $NewPath, "User")
 }
 
 winget install AgileBits.1Password Canonical.Ubuntu dbeaver.dbeaver Docker.DockerCLI Docker.DockerCompose `
                Fortinet.FortiClientVPN Genymobile.scrcpy Git.Git Google.Chrome Google.PlatformTools `
-               Hashicorp.Vagrant Helm.Helm JanDeDobbeleer.OhMyPosh M2Team.NanaZip `
+               Hashicorp.Vagrant JanDeDobbeleer.OhMyPosh jdx.mise M2Team.NanaZip `
                Microsoft.DotNet.SDK.3_1 Microsoft.DotNet.SDK.6 Microsoft.DotNet.SDK.8 `
                Microsoft.PowerShell Microsoft.Teams Microsoft.Office Microsoft.VisualStudioCode `
                OBSProject.OBSStudio okibcn.nano RedHat.OpenShift-Client RedHat.Podman RedHat.Podman-Desktop `
-               Starpine.Screenbox WinDirStat.WinDirStat WinMerge.WinMerge version-fox.vfox ZhornSoftware.Caffeine
+               Starpine.Screenbox WinDirStat.WinDirStat WinMerge.WinMerge ZhornSoftware.Caffeine
 
-# Install vfox plugins
-Invoke-Expression "$(vfox activate pwsh)"
-vfox add gradle java kubectl nodejs
-vfox install gradle@8.6 java@17 kubectl@1.30.2 nodejs@20
-vfox use -g gradle@8.6
-vfox use -g java@17
-vfox use -g kubectl@1.30.2
-vfox use -g nodejs@20
+# Install mise plugins
+mise use --global gradle@8.6
+mise use --global helm
+mise use --global helmfile
+mise use --global java@17
+mise use --global kubectl
+mise use --global node@20
 
 # Install utils
 git clone -q https://gist.github.com/9b17662d281c734b7977d4ea48959953.git $env:APPDATA\apktool
@@ -32,14 +31,14 @@ oh-my-posh font install CascadiaCode
 
 # Update path
 Update-EnvironmentPath -Directory "$env:APPDATA\apktool"
+Update-EnvironmentPath -Directory "$env:LOCALAPPDATA\mise\shims"
 
-# Create $PROFILE if it doesn't exist
+# Create $PROFILE if it doesnt exist
 if (-not (Test-Path $PROFILE)) {
   New-Item $PROFILE -Type File -ErrorAction Stop -Force | Out-Null
 }
 
 # Update $PROFILE
-Add-Content -Path $PROFILE -Value 'Invoke-Expression "$(vfox activate pwsh)"'
 Add-Content -Path $PROFILE -Value "oh-my-posh init pwsh --config ""$env:POSH_THEMES_PATH\robbyrussell.omp.json"" | Invoke-Expression"
 Add-Content -Path $PROFILE -Value "Import-Module ""$env:APPDATA\posh-git\src\posh-git.psd1"""
 

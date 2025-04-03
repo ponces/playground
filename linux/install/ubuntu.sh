@@ -6,8 +6,8 @@ set -e
 
 tee $HOME/.bash_profile >/dev/null << 'EOF'
 # ~/.bash_profile
-export PATH="$PATH:$HOME/.local/bin"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib64:$HOME/.local/lib"
+export PATH="$HOME/.local/bin:$PATH"
+export LD_LIBRARY_PATH="$HOME/.local/lib64:$HOME/.local/lib:$LD_LIBRARY_PATH"
 
 alias buildroid='source build/envsetup.sh && lunch ponces_gsi_arm64-bp1a-userdebug && make -j$(nproc --ignore=2) systemimage'
 alias cddev='cd $HOME/ponces/device/ponces/gsi'
@@ -42,17 +42,17 @@ $SUDO usermod -aG docker $USER
 curl -sfL https://go.ponces.xyz/android | bash
 curl -sfL https://go.ponces.xyz/aosp | bash
 curl -sfL https://go.ponces.xyz/ffsend | bash
-curl -sfL https://go.ponces.xyz/rust | bash
-curl -sfL https://go.ponces.xyz/vfox | bash
+curl -sfL https://go.ponces.xyz/mise | bash
 curl -sfL https://go.ponces.xyz/zsh | bash
 
-eval "$(vfox activate bash)"
-vfox install dotnet@8.0.11 gradle@8.6 java@17 kubectl@1.30.2 nodejs@20
-vfox use -g dotnet@8.0.11
-vfox use -g gradle@8.6
-vfox use -g java@17
-vfox use -g kubectl@1.30.2
-vfox use -g nodejs@20
+mise use --global dotnet@8.0
+mise use --global gradle@8.6
+mise use --global helm
+mise use --global helmfile
+mise use --global java@17
+mise use --global kubectl
+mise use --global node@20
+mise use --global rust
 
 git config --global alias.pushfwl "push --force-with-lease"
 git config --global color.ui "auto"
