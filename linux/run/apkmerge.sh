@@ -4,7 +4,7 @@ set -e
 
 [ -z $TMPDIR ] && [ -d /tmp ] && TMPDIR="/tmp"
 
-curl -sfL https://gist.github.com/ponces/530da4ddaebef8ec3a6840ad9fe6be00/raw/apkmd.sh | bash -s -- "$1" "$2"
+curl -sfL https://go.ponces.xyz/apkmd | bash -s -- "$1" "$2"
 downFile="$(ls -Art | tail -n 1)"
 
 curl -sfL https://api.github.com/repos/REAndroid/APKEditor/releases | \

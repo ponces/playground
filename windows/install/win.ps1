@@ -25,7 +25,8 @@ mise use --global kubectl
 mise use --global node@20
 
 # Install utils
-git clone -q https://gist.github.com/9b17662d281c734b7977d4ea48959953.git $env:APPDATA\apktool
+New-Item -Path "$env:APPDATA\apktool" -ItemType Directory -Force | Out-Null
+curl -sfL https://go.ponces.xyz/apktool -o "$env:APPDATA\apktool\apktool.ps1"
 git clone -q https://github.com/dahlbyk/posh-git $env:APPDATA\posh-git
 oh-my-posh font install CascadiaCode
 
