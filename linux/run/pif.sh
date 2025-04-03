@@ -34,7 +34,7 @@ PRODUCT="$(echo "$PRODUCT_LIST" | tail -n 1)"
 OTA="$(echo "$OTA_LIST" | tail -n 1)"
 DEVICE="$(echo "$PRODUCT" | sed 's/_beta//')"
 
-timeout 1 wget -O $TMPDIR/PIXEL_ZIP_METADATA --no-check-certificate $OTA 2>/dev/null
+timeout 1 wget -O $TMPDIR/PIXEL_ZIP_METADATA --no-check-certificate $OTA 2>/dev/null || true
 FINGERPRINT="$(grep -am1 'post-build=' $TMPDIR/PIXEL_ZIP_METADATA | cut -d= -f2)"
 SECURITY_PATCH="$(grep -am1 'security-patch-level=' $TMPDIR/PIXEL_ZIP_METADATA | cut -d= -f2)"
 rm -f $TMPDIR/PIXEL_VERSIONS_HTML $TMPDIR/PIXEL_LATEST_HTML $TMPDIR/PIXEL_BETA_HTML $TMPDIR/PIXEL_OTA_HTML $TMPDIR/PIXEL_ZIP_METADATA
