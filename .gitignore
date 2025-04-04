@@ -3,6 +3,7 @@
 *.cpp
 *.crt
 *.cs
+*.db
 *.deb
 *.dll
 *.env

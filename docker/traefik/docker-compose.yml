@@ -1,0 +1,32 @@
+services:
+  reverse-proxy:
+    image: traefik:v3.3
+    container_name: traefik
+    restart: always
+    env_file:
+      - traefik.env
+    networks:
+      - web
+    command:
+      - "--log.level=DEBUG"
+      - "--api.dashboard=true"
+      - "--api.insecure=false"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.ponces.xyz`)"
+      - "traefik.http.routers.traefik.entrypoints=web"
+      - "traefik.http.routers.traefik.service=api@internal"
+      - "traefik.http.routers.traefik.middlewares=traefik-auth"
+      - "traefik.http.middlewares.traefik-auth.basicauth.users=${BASIC_AUTH_USER}:${BASIC_AUTH_PASS}"
+
+networks:
+  web:
+    external: true

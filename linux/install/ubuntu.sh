@@ -30,7 +30,7 @@ echo "{\"api_id\": $TELEGRAM_API_ID, \"api_hash\": \"$TELEGRAM_API_HASH\"}" > $H
 
 $SUDO apt update
 $SUDO apt upgrade -y
-$SUDO apt install -y bash build-essential ca-certificates curl dos2unix ffmpeg git jq pipx \
+$SUDO apt install -y apache2-utils bash build-essential ca-certificates curl dos2unix ffmpeg git jq pipx \
                      python3 python3-dev python-is-python3 python3-pip python3-venv tar tree \
                      unzip wget xz-utils zip
 
