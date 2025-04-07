@@ -19,6 +19,7 @@ $SUDO usermod -aG docker $USER
 
 curl -sfSL https://go.ponces.xyz/android | bash
 curl -sfSL https://go.ponces.xyz/aosp | bash
+curl -sfSL https://go.ponces.xyz/bitwarden | bash
 curl -sfSL https://go.ponces.xyz/chezmoi | bash
 curl -sfSL https://go.ponces.xyz/ffsend | bash
 curl -sfSL https://go.ponces.xyz/mise | bash

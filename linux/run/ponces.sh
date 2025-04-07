@@ -7,7 +7,7 @@ pass="ponces"
 
 apt install -y sudo
 
-if ! command -v useradd &>/dev/null; then
+if ! command -v useradd >/dev/null; then
     addgroup "$user"
     adduser "$user" --home "/home/$user" --gecos "$user" --ingroup "$user" --shell "/bin/bash"
 else

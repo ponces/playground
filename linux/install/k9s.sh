@@ -10,5 +10,5 @@ curl -sfSL https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_am
 tar -zxf $TMPDIR/k9s.tar.gz k9s
 rm -f $TMPDIR/k9s.tar.gz
 
-$SUDO mv k9s /usr/local/bin
+$SUDO cp k9s /usr/local/bin
 $SUDO chmod +x /usr/local/bin/k9s

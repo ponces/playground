@@ -19,6 +19,7 @@ apt install -y root-repo tur-repo x11-repo
 apt install -y binutils code-server file git iproute2 jq keychain ncurses-utils nodejs-lts \
                openssh openssl-tool python termux-services tsu unzip wget yarn zip
 
+curl -sfSL https://go.ponces.xyz/bitwarden | bash
 curl -sfSL https://go.ponces.xyz/chezmoi | bash
 curl -sfSL https://go.ponces.xyz/ffsend | bash
 curl -sfSL https://go.ponces.xyz/mise | bash
