@@ -9,7 +9,7 @@ keybox="$1"
 if [ ! -f "$keybox" ]; then
     keybox="$TMPDIR/keybox.xml"
     if [[ "$1" == "http"* ]]; then
-        curl -sfL "$1" -o "$keybox"
+        curl -sfSL "$1" -o "$keybox"
     else
         echo "$1" > "$keybox"
     fi

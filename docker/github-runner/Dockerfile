@@ -16,7 +16,7 @@ RUN apt update && \
                    libffi-dev libicu-dev libkrb5-3 liblttng-ust1t64 libssl-dev python3 python3-dev python3-pip python3-venv \
                    s6 tar uidmap unzip wget xz-utils zip zlib1g
 
-RUN curl -sfL https://get.docker.com -o get-docker.sh && \
+RUN curl -sfSL https://get.docker.com -o get-docker.sh && \
     sh get-docker.sh && \
     rm -f get-docker.sh && \
     update-alternatives --set iptables /usr/sbin/iptables-legacy && \
@@ -53,7 +53,7 @@ RUN chmod +x /usr/local/bin/stop.sh
 USER ubuntu
 WORKDIR /work/actions-runner
 
-RUN curl -sfL https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz -o runner.tar.gz && \
+RUN curl -sfSL https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz -o runner.tar.gz && \
     tar -xvf runner.tar.gz && \
     rm -f runner.tar.gz
 

@@ -26,7 +26,7 @@ mise use --global node@20
 
 # Install utils
 New-Item -Path "$env:APPDATA\apktool" -ItemType Directory -Force | Out-Null
-curl -sfL https://go.ponces.xyz/apktool -o "$env:APPDATA\apktool\apktool.ps1"
+curl -sfSL https://go.ponces.xyz/apktool -o "$env:APPDATA\apktool\apktool.ps1"
 git clone -q https://github.com/dahlbyk/posh-git $env:APPDATA\posh-git
 oh-my-posh font install CascadiaCode
 

@@ -21,7 +21,7 @@ random() {
     echo "$result"
 }
 
-key="$(curl -sfL https://github.com/Citra-Standalone/Citra-Standalone/raw/refs/heads/main/zipball/$keybox.tar | base64 -d)"
+key="$(curl -sfSL https://github.com/Citra-Standalone/Citra-Standalone/raw/refs/heads/main/zipball/$keybox.tar | base64 -d)"
 
 if [ -z "$key" ]; then
     echo "Keybox download failed. Exiting..."

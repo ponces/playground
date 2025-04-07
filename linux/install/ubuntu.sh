@@ -36,14 +36,14 @@ $SUDO apt install -y apache2-utils bash build-essential ca-certificates curl dos
 
 pipx install liblp payload_dumper telegram-upload yt-dlp
 
-curl -sfL https://get.docker.com | $SUDO bash
+curl -sfSL https://get.docker.com | $SUDO bash
 $SUDO usermod -aG docker $USER
 
-curl -sfL https://go.ponces.xyz/android | bash
-curl -sfL https://go.ponces.xyz/aosp | bash
-curl -sfL https://go.ponces.xyz/ffsend | bash
-curl -sfL https://go.ponces.xyz/mise | bash
-curl -sfL https://go.ponces.xyz/zsh | bash
+curl -sfSL https://go.ponces.xyz/android | bash
+curl -sfSL https://go.ponces.xyz/aosp | bash
+curl -sfSL https://go.ponces.xyz/ffsend | bash
+curl -sfSL https://go.ponces.xyz/mise | bash
+curl -sfSL https://go.ponces.xyz/zsh | bash
 
 mise use --global dotnet@8.0
 mise use --global gradle@8.6

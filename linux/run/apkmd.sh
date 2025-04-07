@@ -9,7 +9,7 @@ if [ $# -lt 2 ]; then
     exit 1
 fi
 
-curl -sfL https://github.com/tanishqmanuja/apkmirror-downloader/releases/latest/download/apkmd -o $TMPDIR/apkmd
+curl -sfSL https://github.com/tanishqmanuja/apkmirror-downloader/releases/latest/download/apkmd -o $TMPDIR/apkmd
 chmod +x $TMPDIR/apkmd
 
 if [ ! -z "$3" ]; then

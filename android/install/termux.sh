@@ -20,7 +20,7 @@ keychain id_ubuild01 id_github 2>/dev/null
 . ~/.keychain/localhost-sh
 EOF
 
-curl -sfL https://gitlab.com/st42/termux-sudo/-/raw/master/sudo -o $PREFIX/bin/sudo
+curl -sfSL https://gitlab.com/st42/termux-sudo/-/raw/master/sudo -o $PREFIX/bin/sudo
 chmod 700 $PREFIX/bin/sudo
 
 apt update
@@ -37,7 +37,7 @@ chmod +x $PREFIX/var/service/code/run
 ln -sf $PREFIX/share/termux-services/svlogger $PREFIX/var/service/code/log/run
 
 if [ ! -d $HOME/.oh-my-zsh ]; then
-    curl -sfL https://go.ponces.xyz/zsh | bash
+    curl -sfSL https://go.ponces.xyz/zsh | bash
 fi
 
 git config --global alias.pushfwl "push --force-with-lease"

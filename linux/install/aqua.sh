@@ -2,7 +2,7 @@
 
 set -e
 
-curl -sfL https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.1.1/aqua-installer | bash
+curl -sfSL https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.1.1/aqua-installer | bash
 
 mkdir -p $HOME/.config/aquaproj-aqua
 echo 'export AQUA_ROOT_DIR="$HOME/.local/share/aquaproj-aqua"' >> $HOME/.bashrc
