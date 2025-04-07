@@ -45,12 +45,13 @@ Add-Content -Path $PROFILE -Value "Import-Module ""$env:APPDATA\posh-git\src\pos
 
 # Update .gitconfig
 git config --global alias.pushfwl "push --force-with-lease"
-git config --global core.editor "nano"
+git config --global core.editor nano
 git config --global core.longpaths true
-git config --global color.ui "auto"
+git config --global credential.helper store
+git config --global color.ui auto
 git config --global fetch.prune true
 git config --global fetch.pruneTags true
-git config --global http.sslBackend "schannel"
+git config --global http.sslBackend schannel
 git config --global pull.rebase true
 git config --global push.autoSetupRemote true
 git config --global rebase.autosquash true

@@ -55,8 +55,9 @@ mise use --global node@20
 mise use --global rust
 
 git config --global alias.pushfwl "push --force-with-lease"
-git config --global color.ui "auto"
-git config --global core.editor "nano"
+git config --global color.ui auto
+git config --global core.editor nano
+git config --global credential.helper store
 git config --global fetch.prune true
 git config --global fetch.pruneTags true
 git config --global pull.rebase true
