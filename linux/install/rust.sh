@@ -2,8 +2,6 @@
 
 set -e
 
-echo '. "$HOME/.cargo/env"' >> $HOME/.bash_profile
-
 curl -sfSL https://sh.rustup.rs | sh -s -- -y
 . "$HOME/.cargo/env"
 rustup default stable

@@ -15,16 +15,12 @@ yaourt -S --noconfirm ferdium-bin google-chrome gyp-git insync insync-nautilus \
 
 $SUDO pacman -Rns $(pacman -Qtdq) --noconfirm
 
-git config --global alias.pushfwl "push --force-with-lease"
-git config --global color.ui "auto"
-git config --global core.editor "nano"
-git config --global fetch.prune true
-git config --global fetch.pruneTags true
-git config --global pull.rebase true
-git config --global push.autoSetupRemote true
-git config --global rebase.autosquash true
-git config --global user.name "Alberto Ponces"
-git config --global user.email "ponces26@gmail.com"
+curl -sfSL https://go.ponces.xyz/android | bash
+curl -sfSL https://go.ponces.xyz/aosp | bash
+curl -sfSL https://go.ponces.xyz/chezmoi | bash
+curl -sfSL https://go.ponces.xyz/ffsend | bash
+curl -sfSL https://go.ponces.xyz/mise | bash
+curl -sfSL https://go.ponces.xyz/zsh | bash
 
 gsettings set org.gnome.desktop.interface icon-theme Numix-Circle
 gsettings set org.gnome.desktop.interface gtk-theme Arc-Dark

@@ -19,5 +19,6 @@ echo $user:$pass | chpasswd
 
 adduser "$user" sudo
 
-[ -f /etc/wsl.conf ] && printf "[user]\ndefault = $user\n" >> /etc/wsl.conf
-  
+if [ -f /etc/wsl.conf ]; then
+    printf "[user]\ndefault = $user\n" >> /etc/wsl.conf
+fi

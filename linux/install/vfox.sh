@@ -11,5 +11,3 @@ $SUDO apt install -y vfox
 
 eval "$(vfox activate bash)"
 vfox add dotnet gradle java kubectl nodejs
-
-echo 'eval "$(vfox activate bash)"' >> $HOME/.bashrc

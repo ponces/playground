@@ -4,16 +4,6 @@ set -e
 
 [ "$(id -u)" -ne 0 ] && SUDO="sudo" || SUDO=""
 
-tee -a $HOME/.bash_profile >/dev/null << 'EOF'
-export ANDROID_HOME="$HOME/.android/sdk"
-export ANDROID_BUILD_TOOLS="$ANDROID_HOME/build-tools/35.0.0"
-export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/27.1.12297006"
-export ANDROID_PLATFORM_TOOLS="$ANDROID_HOME/platform-tools"
-export ANDROID_TOOLCHAIN="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64"
-export PATH="$ANDROID_BUILD_TOOLS:$ANDROID_PLATFORM_TOOLS:$ANDROID_TOOLCHAIN/bin:$ANDROID_HOME/cmdline-tools/latest/bin:$HOME/.local/bin:$PATH"
-export LD_LIBRARY_PATH="$HOME/.local/lib64:$HOME/.local/lib:$LD_LIBRARY_PATH"
-EOF
-
 ANDROID_HOME="$HOME/.android/sdk"
 mkdir -p $ANDROID_HOME
 
