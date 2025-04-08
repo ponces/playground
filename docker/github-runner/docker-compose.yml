@@ -1,7 +1,20 @@
 services:
-  ponces-gsi-runner:
-    image: ponces/github-runner
-    container_name: ponces-gsi-runner
+  ponces-gsi-runner-dind:
+    image: ponces/github-runner-dind
+    container_name: ponces-gsi-runner-dind
+    restart: always
+    privileged: true
+    build:
+      target: dind-runner
+      args:
+        RUNNER_VERSION: ${RUNNER_VERSION}
+        S6_OVERLAY_VERSION: ${S6_OVERLAY_VERSION}
+    env_file:
+      - ponces.env
+
+  aosp-gsi-runner-dind:
+    image: ponces/github-runner-dind
+    container_name: aosp-gsi-runner-dind
     restart: always
     privileged: true
     build:
@@ -9,16 +22,31 @@ services:
         RUNNER_VERSION: ${RUNNER_VERSION}
         S6_OVERLAY_VERSION: ${S6_OVERLAY_VERSION}
     env_file:
+      - aosp.env
+
+  ponces-gsi-runner-dood:
+    image: ponces/github-runner-dood
+    container_name: ponces-gsi-runner-dood
+    restart: always
+    build:
+      target: dood-runner
+      args:
+        RUNNER_VERSION: ${RUNNER_VERSION}
+        S6_OVERLAY_VERSION: ${S6_OVERLAY_VERSION}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    env_file:
       - ponces.env
 
-  aosp-gsi-runner:
-    image: ponces/github-runner
-    container_name: aosp-gsi-runner
+  aosp-gsi-runner-dood:
+    image: ponces/github-runner-dood
+    container_name: aosp-gsi-runner-dood
     restart: always
-    privileged: true
     build:
       args:
         RUNNER_VERSION: ${RUNNER_VERSION}
         S6_OVERLAY_VERSION: ${S6_OVERLAY_VERSION}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     env_file:
       - aosp.env
