@@ -10,13 +10,27 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 RUN apt update && \
     apt upgrade -y && \
-    apt install -y bash build-essential ca-certificates curl fuse-overlayfs git iproute2 jq kmod \
-                   libffi-dev libicu-dev libkrb5-3 liblttng-ust1t64 libssl-dev python3 python3-dev python3-pip python3-venv \
-                   s6 tar unzip wget xz-utils zip zlib1g
-
-RUN apt clean -y && \
+    apt install -y aapt android-sdk-libsparse-utils bash bc bison build-essential ca-certificates curl \
+                   dos2unix flex fontconfig fuse-overlayfs g++-multilib gcc-multilib git gnupg gperf \
+                   imagemagick iproute2 jq kmod lib32z1-dev libc6-dev-i386 libelf-dev libffi-dev \
+                   libgl1-mesa-dev libicu-dev libkrb5-3 liblttng-ust1t64 libncurses-dev libssl-dev \
+                   libstdc++6 libx11-dev libxml2-utils locales lunzip lzip lzop m4 make nano \
+                   python-is-python3 python3 python3-dev python3-pip python3-venv rsync squashfs-tools \
+                   s6 tar tree unzip wget x11proto-core-dev xattr xmlstarlet xsltproc xz-utils zip \
+                   zlib1g zlib1g-dev && \
+    apt install -y --no-install-recommends openjdk-17-jdk && \
+    apt clean -y && \
     apt autoremove -y && \
     rm -rf /var/lib/apt/lists/*
+
+RUN locale-gen en_US.UTF-8 && \
+    dpkg-reconfigure locales
+
+RUN curl -sfL https://storage.googleapis.com/git-repo-downloads/repo > /usr/local/bin/repo && \
+    chmod +x /usr/local/bin/repo
+
+RUN curl -sfL https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
+    apt install -y git-lfs
 
 ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz /tmp
 ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-x86_64.tar.xz /tmp
@@ -74,7 +88,7 @@ FROM base AS dood-runner
 
 RUN curl -sfSL https://download.docker.com/linux/static/stable/x86_64/docker-$(curl -sfSL https://get.docker.com/rootless | grep "STABLE_LATEST=" | cut -d'"' -f2).tgz -o docker.tgz && \
     tar -xvf docker.tgz && \
-    cp docker/docker /usr/local/bin && \
+    cp -f docker/docker /usr/local/bin/docker && \
     rm -rf docker docker.tgz && \
     rm -rf /etc/services.d/docker && \
     sed -i '/docker/d' /etc/services.d/runner/run && \
