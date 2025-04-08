@@ -4,9 +4,13 @@ set -e
 
 [ "$(id -u)" -ne 0 ] && SUDO="sudo" || SUDO=""
 
+mkdir -p $HOME/.config
+mkdir -p $HOME/.local/bin
+mkdir -p $HOME/.local/share
+
 $SUDO pacman -Syyu --noconfirm
 $SUDO pacman -S --noconfirm adapta-gtk-theme android-tools android-udev chrome-gnome-shell \
-                          gdm gimp gparted htop npm steam tlp vlc youtube-dl
+                           gdm gimp gparted htop npm steam tlp vlc youtube-dl
 
 yaourt -Syua --noconfirm
 yaourt -S --noconfirm ferdium-bin google-chrome gyp-git insync insync-nautilus \

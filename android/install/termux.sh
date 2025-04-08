@@ -10,14 +10,18 @@ if [ ! -d $HOME/storage ]; then
     exit 1
 fi
 
-curl -sfSL https://gitlab.com/st42/termux-sudo/-/raw/master/sudo -o $PREFIX/bin/sudo
-chmod 700 $PREFIX/bin/sudo
+mkdir -p $HOME/.config
+mkdir -p $HOME/.local/bin
+mkdir -p $HOME/.local/share
 
 apt update
 apt upgrade -y
 apt install -y root-repo tur-repo x11-repo
-apt install -y binutils code-server file git iproute2 jq keychain ncurses-utils nodejs-lts \
-               openssh openssl-tool python termux-services tsu unzip wget yarn zip
+apt install -y bash binutils code-server curl file git iproute2 jq keychain nano ncurses-utils \
+               nodejs-lts openssh openssl-tool python termux-services tar tsu unzip wget yarn zip
+
+curl -sfSL https://gitlab.com/st42/termux-sudo/-/raw/master/sudo -o $PREFIX/bin/sudo
+chmod 700 $PREFIX/bin/sudo
 
 curl -sfSL https://go.ponces.xyz/bitwarden | bash
 export BW_SESSION="bw unlock --raw"
@@ -38,6 +42,6 @@ chmod +x $PREFIX/var/service/code/run
 ln -sf $PREFIX/share/termux-services/svlogger $PREFIX/var/service/code/log/run
 
 mkdir -p $HOME/.ssh
-[ -f $HOME/storage/downloads/id_github ] && cp $HOME/storage/downloads/id_github $HOME/.ssh
-[ -f $HOME/storage/downloads/id_ubuild01 ] && cp $HOME/storage/downloads/id_ubuild01 $HOME/.ssh
+[ -f $HOME/storage/downloads/id_github ] && cp -f $HOME/storage/downloads/id_github $HOME/.ssh/id_github
+[ -f $HOME/storage/downloads/id_ubuild01 ] && cp -f $HOME/storage/downloads/id_ubuild01 $HOME/.ssh/id_ubuild01
 [ -f $HOME/storage/downloads/id_termux.pub ] && cat $HOME/storage/downloads/id_termux.pub >> $HOME/.ssh/authorized_keys

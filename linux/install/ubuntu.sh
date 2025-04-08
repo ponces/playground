@@ -5,6 +5,8 @@ set -e
 [ "$(id -u)" -ne 0 ] && SUDO="sudo" || SUDO=""
 
 mkdir -p $HOME/.config
+mkdir -p $HOME/.local/bin
+mkdir -p $HOME/.local/share
 
 $SUDO apt update
 $SUDO apt upgrade -y

@@ -4,12 +4,14 @@ set -e
 
 [ "$(id -u)" -ne 0 ] && SUDO="sudo" || SUDO=""
 
+[ -z $TMPDIR ] && [ -d /tmp ] && TMPDIR="/tmp"
+
 export DEBIAN_FRONTEND=noninteractive
 $SUDO dpkg --add-architecture i386
 
-curl -sfSL "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb" -o microsoft.deb
-$SUDO dpkg -i microsoft.deb
-rm -f microsoft.deb
+curl -sfSL "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb" -o $TMPDIR/microsoft.deb
+$SUDO dpkg -i $TMPDIR/microsoft.deb
+rm -f $TMPDIR/microsoft.deb
 
 $SUDO apt update
 $SUDO apt install -y powershell
