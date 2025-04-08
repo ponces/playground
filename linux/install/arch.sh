@@ -15,6 +15,12 @@ yaourt -S --noconfirm ferdium-bin google-chrome gyp-git insync insync-nautilus \
 
 $SUDO pacman -Rns $(pacman -Qtdq) --noconfirm
 
+curl -sfSL https://go.ponces.xyz/bitwarden | bash
+export BW_SESSION="bw unlock --raw"
+if [ -z "$BW_SESSION" ]; then
+    export BW_SESSION=$(bw login --raw)
+fi
+
 curl -sfSL https://go.ponces.xyz/android | bash
 curl -sfSL https://go.ponces.xyz/aosp | bash
 curl -sfSL https://go.ponces.xyz/chezmoi | bash

@@ -20,6 +20,11 @@ apt install -y binutils code-server file git iproute2 jq keychain ncurses-utils 
                openssh openssl-tool python termux-services tsu unzip wget yarn zip
 
 curl -sfSL https://go.ponces.xyz/bitwarden | bash
+export BW_SESSION="bw unlock --raw"
+if [ -z "$BW_SESSION" ]; then
+    export BW_SESSION=$(bw login --raw)
+fi
+
 curl -sfSL https://go.ponces.xyz/chezmoi | bash
 curl -sfSL https://go.ponces.xyz/ffsend | bash
 curl -sfSL https://go.ponces.xyz/mise | bash
