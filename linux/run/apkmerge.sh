@@ -21,3 +21,6 @@ else
     echo "No valid APK file found."
     exit 1
 fi
+
+rm -f $TMPDIR/apkeditor.jar
+rm -f $TMPDIR/debug.keystore
