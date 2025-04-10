@@ -16,9 +16,6 @@ $SUDO apt install -y apache2-utils bash build-essential ca-certificates curl dos
 
 pipx install liblp payload_dumper telegram-upload yt-dlp
 
-curl -sfSL https://get.docker.com | $SUDO bash
-$SUDO usermod -aG docker $USER
-
 curl -sfSL https://go.ponces.xyz/bitwarden | bash
 export BW_SESSION="bw unlock --raw"
 if [ -z "$BW_SESSION" ]; then
@@ -28,6 +25,7 @@ fi
 curl -sfSL https://go.ponces.xyz/android | bash
 curl -sfSL https://go.ponces.xyz/aosp | bash
 curl -sfSL https://go.ponces.xyz/chezmoi | bash
+curl -sfSL https://go.ponces.xyz/docker | bash
 curl -sfSL https://go.ponces.xyz/ffsend | bash
 curl -sfSL https://go.ponces.xyz/mise | bash
 curl -sfSL https://go.ponces.xyz/zsh | bash
