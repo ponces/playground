@@ -7,8 +7,8 @@ More info [here](https://docs.github.com/en/actions/hosting-your-own-runners/man
 
 ```sh
 # Create a custom environment file based on the given template
-cp .env aosp.env
-cat aosp.env
+cp .env.template .env aosp.env ponces.env
+cat .env
 # RUNNER_VERSION=2.323.0
 # S6_OVERLAY_VERSION=3.2.0.2
 # REPO_USER=

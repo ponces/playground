@@ -14,8 +14,8 @@ services:
       - ./files:/srv
       - ./filebrowser.db:/database/filebrowser.db
     environment:
-      - PUID=${UID}
-      - PGID=${GID}
+      - PUID=1000
+      - PGID=1000
 
 networks:
   web:
