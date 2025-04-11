@@ -2,12 +2,12 @@ services:
   portainer:
     image: portainer/portainer-ce:latest
     container_name: portainer
-    restart: always
+    restart: unless-stopped
     networks:
       - web
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.portainer.rule=Host(`portainer.apps.ponces.xyz`)"
+      - "traefik.http.routers.portainer.rule=Host(`docker.apps.ponces.xyz`)"
       - "traefik.http.routers.portainer.entrypoints=websecure"
       - "traefik.http.routers.portainer.tls=true"
       - "traefik.http.routers.portainer.tls.certresolver=cloudflare"

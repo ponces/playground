@@ -2,7 +2,7 @@ services:
   filebrowser:
     image: filebrowser/filebrowser:s6
     container_name: filebrowser
-    restart: always
+    restart: unless-stopped
     networks:
       - web
     labels:

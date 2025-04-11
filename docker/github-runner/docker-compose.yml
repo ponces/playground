@@ -2,7 +2,7 @@ services:
   ponces-gsi-runner:
     image: ponces/github-runner
     container_name: ponces-gsi-runner
-    restart: always
+    restart: unless-stopped
     build:
       target: dood-runner
       args:
@@ -16,7 +16,7 @@ services:
   aosp-gsi-runner:
     image: ponces/github-runner
     container_name: aosp-gsi-runner
-    restart: always
+    restart: unless-stopped
     build:
       args:
         RUNNER_VERSION: ${RUNNER_VERSION}

@@ -2,7 +2,7 @@ services:
   reverse-proxy:
     image: traefik:v3.3
     container_name: traefik
-    restart: always
+    restart: unless-stopped
     networks:
       - web
     command:
