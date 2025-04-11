@@ -11,6 +11,8 @@ cp .env.template .env
 cat .env
 # BASIC_AUTH_USER=
 # BASIC_AUTH_PASS=
+# CLOUDFLARE_EMAIL=
+# CLOUDFLARE_API_KEY=
 
 # Generate a credentials string
 docker run --rm httpd:2.4 htpasswd -nbB <user> <pass> | sed -e 's/\$/\$\$/g'
@@ -19,6 +21,11 @@ docker run --rm httpd:2.4 htpasswd -nbB <user> <pass> | sed -e 's/\$/\$\$/g'
 ## Install
 ```sh
 docker network create web
+```
+
+```sh
+touch acme.json
+chmod 600 acme.json
 ```
 
 ```sh
