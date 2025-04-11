@@ -16,8 +16,8 @@ RUN apt update && \
                    libgl1-mesa-dev libicu-dev libkrb5-3 liblttng-ust1t64 libncurses-dev libssl-dev \
                    libstdc++6 libx11-dev libxml2-utils locales lunzip lzip lzop m4 make nano \
                    python-is-python3 python3 python3-dev python3-pip python3-venv rsync squashfs-tools \
-                   s6 tar tree unzip wget x11proto-core-dev xattr xmlstarlet xsltproc xz-utils zip \
-                   zlib1g zlib1g-dev && \
+                   s6 tar unzip wget x11proto-core-dev xattr xmlstarlet xsltproc xz-utils zip zlib1g \
+                   zlib1g-dev && \
     apt install -y --no-install-recommends openjdk-17-jdk && \
     apt clean -y && \
     apt autoremove -y && \
