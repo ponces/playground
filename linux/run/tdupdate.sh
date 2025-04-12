@@ -6,8 +6,8 @@ set -e
 
 tmpDir="$TMPDIR/tdupdate"
 baseBranch="android-15.0"
-oldBranch="${baseBranch}.0_r9"
-newBranch="${baseBranch}.0_r21"
+oldBranch="${baseBranch}.0_r21"
+newBranch="${baseBranch}.0_r26"
 manifest="https://github.com/TrebleDroid/treble_manifest/raw/$baseBranch/replace.xml"
 
 updateBranch() {
@@ -19,7 +19,7 @@ updateBranch() {
 }
 
 updateRepo() {
-    git clone -q ssh://git@github.com/TrebleDroid/"$1" -b "${oldBranch}-td" --single-branch
+    git clone ssh://git@github.com/TrebleDroid/"$1" -b "${oldBranch}-td" --single-branch
     pushd "$1" &>/dev/null
     repo="$(git remote get-url origin | sed -nE 's;.*/[Tt]reble[Dd]roid/(.*);\1;p' | tr _ /)"
     git remote add aosp https://android.googlesource.com/"$repo"
@@ -53,7 +53,7 @@ pushd "$tmpDir" &>/dev/null
 
 #git clone -q https://github.com/ponces/treble_aosp -b wip
 
-curl -sL "$manifest" -o replace.xml
+curl -sfSL "$manifest" -o replace.xml
 grep -oP "platform_\w+" replace.xml | while read repo; do
     #updateRepo "$repo"
     validateRepo "$repo"
