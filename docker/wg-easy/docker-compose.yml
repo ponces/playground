@@ -18,7 +18,7 @@ services:
       - WG_HOST=vpn.apps.ponces.xyz
       - PASSWORD_HASH=${WG_EASY_PASSWORD}
     ports:
-      - "51820:51820/udp"
+      - 51820:51820/udp
     cap_add:
       - NET_ADMIN
       - SYS_MODULE

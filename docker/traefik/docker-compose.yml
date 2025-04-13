@@ -6,19 +6,21 @@ services:
     networks:
       - web
     command:
-      - "--log.level=DEBUG"
+      #- "--log.level=DEBUG"
       - "--api.dashboard=true"
       - "--api.insecure=false"
       - "--providers.docker=true"
-      - "--providers.docker.exposedByDefault=false"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.dnsovertls.address=:853"
       - "--entrypoints.web.address=:80"
-      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
-      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
       - "--entrypoints.websecure.address=:443"
       - "--entrypoints.websecure.http.tls=true"
       - "--entrypoints.websecure.http.tls.certresolver=cloudflare"
       - "--entrypoints.websecure.http.tls.domains[0].main=apps.ponces.xyz"
       - "--entrypoints.websecure.http.tls.domains[0].sans=*.apps.ponces.xyz"
+      - "--certificatesresolvers.cloudflare.acme.tlschallenge=true"
       - "--certificatesresolvers.cloudflare.acme.dnschallenge=true"
       - "--certificatesresolvers.cloudflare.acme.dnschallenge.provider=cloudflare"
       - "--certificatesresolvers.cloudflare.acme.dnschallenge.resolvers=1.1.1.1:53,8.8.8.8:53"
@@ -27,6 +29,7 @@ services:
     ports:
       - 80:80
       - 443:443
+      - 853:853
     environment:
       - CLOUDFLARE_DNS_API_TOKEN=${CLOUDFLARE_API_KEY}
     volumes:
