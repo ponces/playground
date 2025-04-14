@@ -9,7 +9,7 @@ services:
         RUNNER_VERSION: ${RUNNER_VERSION}
         S6_OVERLAY_VERSION: ${S6_OVERLAY_VERSION}
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     env_file:
       - ponces.env
 
@@ -22,6 +22,6 @@ services:
         RUNNER_VERSION: ${RUNNER_VERSION}
         S6_OVERLAY_VERSION: ${S6_OVERLAY_VERSION}
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     env_file:
       - aosp.env
