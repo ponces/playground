@@ -17,7 +17,7 @@ $SUDO apt install -y apache2-utils bash build-essential ca-certificates curl dns
 pipx install liblp payload_dumper telegram-upload yt-dlp
 
 curl -sfSL https://go.ponces.xyz/bitwarden | bash
-export BW_SESSION="bw unlock --raw"
+export BW_SESSION="$(bw unlock --raw)"
 if [ -z "$BW_SESSION" ]; then
     export BW_SESSION=$(bw login --raw)
 fi
