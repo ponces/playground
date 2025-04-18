@@ -46,13 +46,17 @@ curl -sfSL https://go.ponces.xyz/android | bash
 
 res="$(cat /etc/X11/default-display-manager)"
 if [[ "$res" == "/usr/sbin/gdm3" ]]; then
-    curl -sfSL "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" -o $TMPDIR/chrome.deb
+    curl -sfSL https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o $TMPDIR/chrome.deb
     $SUDO dpkg -i $TMPDIR/chrome.deb
     rm -f $TMPDIR/chrome.deb
 
     curl -sfSL "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -o $TMPDIR/code.deb
     $SUDO dpkg -i $TMPDIR/code.deb
     rm -f $TMPDIR/code.deb
+
+    curl -sfSL https://links.fortinet.com/forticlient/deb/vpnagent -o $TMPDIR/vpn.deb
+    $SUDO dpkg -i $TMPDIR/vpn.deb
+    rm -f $TMPDIR/vpn.deb
 
     link=$(curl -sfSL "https://api.github.com/repos/IsmaelMartinez/teams-for-linux/releases/latest" | \
                 jq -r ".assets[] | \
