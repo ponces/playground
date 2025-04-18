@@ -46,6 +46,10 @@ curl -sfSL https://go.ponces.xyz/android | bash
 
 res="$(cat /etc/X11/default-display-manager)"
 if [[ "$res" == "/usr/sbin/gdm3" ]]; then
+    echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0666", GROUP="plugdev"' | $SUDO tee /etc/udev/rules.d/51-android.rules
+    $SUDO udevadm control --reload
+    $SUDO udevadm trigger
+
     curl -sfSL https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o $TMPDIR/chrome.deb
     $SUDO dpkg -i $TMPDIR/chrome.deb
     rm -f $TMPDIR/chrome.deb
