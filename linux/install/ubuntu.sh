@@ -46,6 +46,26 @@ curl -sfSL https://go.ponces.xyz/android | bash
 
 res="$(cat /etc/X11/default-display-manager)"
 if [[ "$res" == "/usr/sbin/gdm3" ]]; then
+    if command -v gsettings >/dev/null; then
+        gsettings set org.gnome.desktop.interface accent-color 'teal'
+        gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+        gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
+        gsettings set org.gnome.desktop.peripherals.touchpad edge-scrolling-enabled false
+        gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
+        gsettings set org.gnome.desktop.peripherals.touchpad speed 0.2
+        gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+        gsettings set org.gnome.desktop.peripherals.touchpad two-finger-scrolling-enabled true
+        gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
+        gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
+        gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature uint32 3700
+        gsettings set org.gnome.settings-daemon.plugins.power lid-close-battery-action 'suspend'
+        gsettings set org.gnome.shell.extensions.dash-to-dock autohide true
+        gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 40
+        gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'
+        gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
+        gsettings set org.gnome.shell.extensions.ding show-home false
+    fi
+
     echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0666", GROUP="plugdev"' | $SUDO tee /etc/udev/rules.d/51-android.rules
     $SUDO udevadm control --reload
     $SUDO udevadm trigger
