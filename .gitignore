@@ -27,5 +27,6 @@
 *.tar
 *.tar.gz
 *.xml
+*.xz
 *.zip
 *.zsh
