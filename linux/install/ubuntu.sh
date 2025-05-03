@@ -46,6 +46,8 @@ curl -sfSL https://go.ponces.xyz/android | bash
 
 res="$(cat /etc/X11/default-display-manager)"
 if [[ "$res" == "/usr/sbin/gdm3" ]]; then
+    $SUDO apt install -y file-roller
+
     if command -v gsettings >/dev/null; then
         gsettings set org.gnome.desktop.interface accent-color 'teal'
         gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
