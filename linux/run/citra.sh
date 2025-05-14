@@ -21,13 +21,17 @@ random() {
     echo "$result"
 }
 
-key="$(curl -sfSL https://github.com/Citra-Standalone/Citra-Standalone/raw/refs/heads/main/zipball/$keybox.tar | base64 -d)"
-
-if [ -z "$key" ]; then
+res="$(curl -sfSL https://github.com/Citra-Standalone/Citra-Standalone/raw/refs/heads/main/zipball/$keybox.tar)"
+if [ -z "$res" ]; then
     echo "Keybox download failed. Exiting..."
     exit 1
 fi
 
+if [[ "$(head -n 1 <<< $res)" == "="* ]]; then
+    res="$(tail -n +8 <<< $res)"
+fi
+
+key="$(echo "$res" | base64 -d)"
 ID="$(echo "$key" | grep '^ID=' | cut -d'=' -f2-)"
 TYPE="$(echo "$key" | grep '^TYPE=' | cut -d'=' -f2-)"
 ecdsa_key="$(echo "$key" | sed -n '/<Key algorithm="ecdsa">/,/<\/Key>/p')"
