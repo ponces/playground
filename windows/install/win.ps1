@@ -10,8 +10,8 @@ function Update-EnvironmentPath {
 
 winget install AgileBits.1Password Bitwarden.CLI Canonical.Ubuntu dbeaver.dbeaver Docker.DockerCLI `
                Docker.DockerCompose Fortinet.FortiClientVPN Genymobile.scrcpy Git.Git Google.Chrome `
-               Google.PlatformTools Hashicorp.Vagrant JanDeDobbeleer.OhMyPosh jdx.mise M2Team.NanaZip `
-               Microsoft.DotNet.SDK.3_1 Microsoft.DotNet.SDK.6 Microsoft.DotNet.SDK.8 `
+               Google.PlatformTools Hashicorp.Vagrant JanDeDobbeleer.OhMyPosh jdx.mise jqlang.jq `
+               M2Team.NanaZip Microsoft.DotNet.SDK.3_1 Microsoft.DotNet.SDK.6 Microsoft.DotNet.SDK.8 `
                Microsoft.PowerShell Microsoft.Teams Microsoft.Office Microsoft.VisualStudioCode `
                OBSProject.OBSStudio okibcn.nano RedHat.OpenShift-Client RedHat.Podman RedHat.Podman-Desktop `
                Starpine.Screenbox twpayne.chezmoi WinDirStat.WinDirStat WinMerge.WinMerge ZhornSoftware.Caffeine
