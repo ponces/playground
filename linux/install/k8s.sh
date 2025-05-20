@@ -6,7 +6,7 @@ set -e
 
 curl -sfSL https://get.k3s.io | bash -s -
 
-mkdir -p $HOME/.kube/config
+mkdir -p $HOME/.kube
 $SUDO cp -f /etc/rancher/k3s/k3s.yaml $HOME/.kube/config
 $SUDO chown $USER:$USER $HOME/.kube/config
 chmod 600 $HOME/.kube/config
