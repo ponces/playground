@@ -2,6 +2,11 @@
 
 set -e
 
+if [ -z "$TERMUX_VERSION" ]; then
+    echo "This script is intended for Termux on Android. Exiting..."
+    exit 1
+fi
+
 yes | termux-setup-storage
 sleep 10
 

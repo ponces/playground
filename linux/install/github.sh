@@ -3,10 +3,11 @@
 set -e
 
 [ -z $TMPDIR ] && [ -d /tmp ] && TMPDIR="/tmp"
+[ "$(uname -m)" = "aarch64" ] && ARCH="arm64" || ARCH="amd64"
 
 link=$(curl -sfSL "https://api.github.com/repos/cli/cli/releases/latest" | \
             jq -r ".assets[] | \
-                select(.name | endswith(\"_linux_amd64.tar.gz\")) | \
+                select(.name | endswith(\"_linux_$ARCH.tar.gz\")) | \
                 .browser_download_url" | \
             head -1)
 curl -sfSL "$link" -o $TMPDIR/github.tar.gz

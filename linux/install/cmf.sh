@@ -3,7 +3,6 @@
 set -e
 
 [ "$(id -u)" -ne 0 ] && SUDO="sudo" || SUDO=""
-
 [ -z $TMPDIR ] && [ -d /tmp ] && TMPDIR="/tmp"
 
 export DEBIAN_FRONTEND=noninteractive

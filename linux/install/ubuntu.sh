@@ -2,9 +2,14 @@
 
 set -e
 
-[ "$(id -u)" -ne 0 ] && SUDO="sudo" || SUDO=""
+if ! command -v lsb_release &> /dev/null; then
+    echo "This script is intended for Debian-based OSes. Exiting..."
+    exit 1
+fi
 
+[ "$(id -u)" -ne 0 ] && SUDO="sudo" || SUDO=""
 [ -z $TMPDIR ] && [ -d /tmp ] && TMPDIR="/tmp"
+[ "$(uname -m)" = "aarch64" ] && ARCH="arm64" || ARCH="amd64"
 
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -72,7 +77,7 @@ if [[ "$res" == "/usr/sbin/gdm3" ]]; then
     $SUDO udevadm control --reload
     $SUDO udevadm trigger
 
-    curl -sfSL https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o $TMPDIR/chrome.deb
+    curl -sfSL https://dl.google.com/linux/direct/google-chrome-stable_current_$ARCH.deb -o $TMPDIR/chrome.deb
     $SUDO dpkg -i $TMPDIR/chrome.deb
     rm -f $TMPDIR/chrome.deb
 
@@ -86,7 +91,7 @@ if [[ "$res" == "/usr/sbin/gdm3" ]]; then
 
     link=$(curl -sfSL "https://api.github.com/repos/ferdium/ferdium-app/releases/latest" | \
                 jq -r ".assets[] | \
-                    select(.name | endswith(\"amd64.deb\")) | \
+                    select(.name | endswith(\"$ARCH.deb\")) | \
                     .browser_download_url")
     curl -sfSL "$link" -o $TMPDIR/ferdium.deb
     $SUDO dpkg -i $TMPDIR/ferdium.deb

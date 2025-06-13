@@ -3,8 +3,8 @@
 set -e
 
 [ "$(id -u)" -ne 0 ] && SUDO="sudo" || SUDO=""
-
 [ -z $TMPDIR ] && [ -d /tmp ] && TMPDIR="/tmp"
+[ "$(uname -m)" = "aarch64" ] && ARCH="arm64" || ARCH="amd64"
 
 if [ ! -z $TERMUX_VERSION ] && command -v npm >/dev/null; then
     export GYP_DEFINES="android_ndk_path=''"
@@ -18,7 +18,7 @@ if [[ "$res" == "/usr/sbin/gdm3" ]]; then
                 jq -r ".[] | \
                     select(.name | startswith(\"Desktop\")) | \
                     .assets[] | \
-                    select(.name | endswith(\"amd64.deb\")) | \
+                    select(.name | endswith(\"$ARCH.deb\")) | \
                     .browser_download_url" | \
                 head -1)
     curl -sfSL "$link" -o $TMPDIR/bw.deb
