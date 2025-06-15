@@ -3,4 +3,4 @@
 set -e
 
 curl -sfSL https://mise.run | bash
-mise settings experimental=true
+$HOME/.local/bin/mise settings experimental=true
