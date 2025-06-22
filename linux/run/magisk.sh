@@ -49,8 +49,8 @@ wget -q https://github.com/topjohnwu/Magisk/raw/master/scripts/module_installer.
     echo "description=$moduleName"
 } > "$outDir"/module.prop
 
-pushd "$outDir" >/dev/null
+pushd "$outDir" 1>/dev/null
 zip -qr "$outDir"/../"$moduleId".zip *
-popd >/dev/null
+popd 1>/dev/null
 
 rm -rf $outDir
