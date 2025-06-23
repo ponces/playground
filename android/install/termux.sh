@@ -23,7 +23,8 @@ apt update
 apt upgrade -y
 apt install -y root-repo tur-repo x11-repo
 apt install -y bash binutils code-server curl file git iproute2 jq keychain nano ncurses-utils \
-               nodejs-lts openssh openssl-tool python termux-services tar tsu unzip wget yarn zip
+               nodejs-lts openssh openssl-tool python termux-services tar tsu unzip wget which \
+               yarn zip zsh
 
 curl -sfSL https://gitlab.com/st42/termux-sudo/-/raw/master/sudo -o $PREFIX/bin/sudo
 chmod 700 $PREFIX/bin/sudo
