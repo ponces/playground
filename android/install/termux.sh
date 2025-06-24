@@ -23,8 +23,8 @@ apt-get update
 apt-get upgrade -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"
 apt-get install -y root-repo tur-repo x11-repo
 apt-get install -y bash binutils code-server curl file git iproute2 jq keychain nano ncurses-utils \
-                   nodejs-lts openssh openssl-tool python sudo termux-services tar unzip wget which \
-                   yarn zip zsh
+                   nodejs-lts openjdk-17 openssh openssl-tool python sudo termux-services tar unzip \
+                   wget which yarn zip zsh
 
 curl -sfSL https://go.ponces.xyz/bitwarden | bash
 curl -sfSL https://go.ponces.xyz/chezmoi | bash
