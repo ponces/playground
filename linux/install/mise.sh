@@ -3,7 +3,7 @@
 set -e
 
 if [ ! -z "$TERMUX_VERSION" ]; then
-    curl https://mise.jdx.dev/mise-latest-linux-arm64-musl > $HOME/.local/bin/mise
+    curl -sfSL https://mise.jdx.dev/mise-latest-linux-arm64-musl -o $HOME/.local/bin/mise
     chmod +x $HOME/.local/bin/mise
     pushd $PREFIX/etc/tls 1>/dev/null
     mkdir -p certs
