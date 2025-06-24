@@ -5,7 +5,7 @@ set -e
 user="ponces"
 pass="ponces"
 
-apt install -y sudo
+apt-get install -y sudo
 
 if ! command -v useradd >/dev/null; then
     addgroup "$user"

@@ -6,8 +6,8 @@ set -e
 
 echo "deb [trusted=yes] https://apt.fury.io/versionfox/ /" | $SUDO tee /etc/apt/sources.list.d/versionfox.list
 
-$SUDO apt update
-$SUDO apt install -y vfox
+$SUDO apt-get update
+$SUDO apt-get install -y vfox
 
 eval "$(vfox activate bash)"
 vfox add dotnet gradle java kubectl nodejs

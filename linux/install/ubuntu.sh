@@ -17,11 +17,11 @@ mkdir -p $HOME/.config
 mkdir -p $HOME/.local/bin
 mkdir -p $HOME/.local/share
 
-$SUDO apt update
-$SUDO apt upgrade -y
-$SUDO apt install -y apache2-utils bash build-essential ca-certificates curl dnsutils dos2unix \
-                     ffmpeg git jq pipx python3 python3-dev python-is-python3 python3-pip \
-                     python3-venv tar tree unzip wget xdg-utils xz-utils zip
+$SUDO apt-get update
+$SUDO apt-get upgrade -y
+$SUDO apt-get install -y apache2-utils bash build-essential ca-certificates curl dnsutils dos2unix \
+                         ffmpeg git jq pipx python3 python3-dev python-is-python3 python3-pip \
+                         python3-venv tar tree unzip wget xdg-utils xz-utils zip
 
 pipx install liblp payload_dumper telegram-upload yt-dlp
 
@@ -51,7 +51,7 @@ curl -sfSL https://go.ponces.xyz/android | bash
 
 res="$(cat /etc/X11/default-display-manager)"
 if [[ "$res" == "/usr/sbin/gdm3" ]]; then
-    $SUDO apt install -y file-roller
+    $SUDO apt-get install -y file-roller
 
     if command -v gsettings >/dev/null; then
         gsettings set org.gnome.desktop.interface accent-color 'teal'

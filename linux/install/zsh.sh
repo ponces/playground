@@ -8,8 +8,8 @@ rm -rf $HOME/.zshrc*
 rm -rf $HOME/.oh-my-zsh
 
 if ! command -v zsh >/dev/null; then
-    $SUDO apt update
-    $SUDO apt install -y zsh
+    $SUDO apt-get update
+    $SUDO apt-get install -y zsh
 fi
 
 yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

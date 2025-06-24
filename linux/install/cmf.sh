@@ -12,8 +12,8 @@ curl -sfSL "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/pack
 $SUDO dpkg -i $TMPDIR/microsoft.deb
 rm -f $TMPDIR/microsoft.deb
 
-$SUDO apt update
-$SUDO apt install -y powershell
+$SUDO apt-get update
+$SUDO apt-get install -y powershell
 
 curl -sfSL https://dev.criticalmanufacturing.io/repository/http/product/cmfca.pem -o /usr/local/share/ca-certificates/cmfca.crt
 $SUDO update-ca-certificates
