@@ -29,6 +29,7 @@ apt-get install -y bash binutils code-server curl file git iproute2 jq keychain 
 curl -sfSL https://go.ponces.xyz/bitwarden | bash
 curl -sfSL https://go.ponces.xyz/chezmoi | bash
 curl -sfSL https://go.ponces.xyz/ffsend | bash
+curl -sfSL https://go.ponces.xyz/github | bash
 curl -sfSL https://go.ponces.xyz/mise | bash
 curl -sfSL https://go.ponces.xyz/zsh | bash
 
