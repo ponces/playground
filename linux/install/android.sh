@@ -2,7 +2,7 @@
 
 set -e
 
-[ -z $TMPDIR ] && [ -d /tmp ] && TMPDIR="/tmp"
+[ -z "$TMPDIR" ] && [ -d /tmp ] && TMPDIR="/tmp"
 
 ANDROID_HOME="$HOME/.android/sdk"
 mkdir -p $ANDROID_HOME

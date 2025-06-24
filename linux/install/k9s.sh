@@ -2,7 +2,7 @@
 
 set -e
 
-[ -z $TMPDIR ] && [ -d /tmp ] && TMPDIR="/tmp"
+[ -z "$TMPDIR" ] && [ -d /tmp ] && TMPDIR="/tmp"
 [ "$(uname -m)" = "aarch64" ] && ARCH="arm64" || ARCH="amd64"
 
 curl -sfSL https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_$ARCH.tar.gz -o $TMPDIR/k9s.tar.gz

@@ -2,7 +2,7 @@
 
 set -e
 
-[ -z $TMPDIR ] && [ -d /tmp ] && TMPDIR="/tmp"
+[ -z "$TMPDIR" ] && [ -d /tmp ] && TMPDIR="/tmp"
 [ "$(uname -m)" = "aarch64" ] && ARCH="arm64" || ARCH="amd64"
 
 link=$(curl -sfSL "https://api.github.com/repos/cli/cli/releases/latest" | \

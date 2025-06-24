@@ -2,7 +2,7 @@
 
 set -e
 
-[ -z $TMPDIR ] && [ -d /tmp ] && TMPDIR="/tmp"
+[ -z "$TMPDIR" ] && [ -d /tmp ] && TMPDIR="/tmp"
 
 branch="$1"
 

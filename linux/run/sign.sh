@@ -2,7 +2,7 @@
 
 set -e
 
-[ -z $TMPDIR ] && [ -d /tmp ] && TMPDIR="/tmp"
+[ -z "$TMPDIR" ] && [ -d /tmp ] && TMPDIR="/tmp"
 
 git clone -q --depth=1 https://github.com/TrebleDroid/treble_app $TMPDIR/treble_app
 git clone -q --depth=1 ssh://git@github.com/ponces/vendor_ponces-priv $TMPDIR/vendor_ponces-priv

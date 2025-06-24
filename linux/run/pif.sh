@@ -2,10 +2,10 @@
 
 set -e
 
-[ -z $DEBUG ] && DEBUG=true
-[ -z $TMPDIR ] && [ -d /tmp ] && TMPDIR="/tmp"
-[ -z $FORCE_DEPTH ] && FORCE_DEPTH=1
-[ -z $FORCE_PREVIEW ] && FORCE_PREVIEW=0
+[ -z "$DEBUG" ] && DEBUG=true
+[ -z "$TMPDIR" ] && [ -d /tmp ] && TMPDIR="/tmp"
+[ -z "$FORCE_DEPTH" ] && FORCE_DEPTH=1
+[ -z "$FORCE_PREVIEW" ] && FORCE_PREVIEW=0
 
 $DEBUG && echo "Pixel Beta pif.json generator script by osm0sis @ xda-developers"
 

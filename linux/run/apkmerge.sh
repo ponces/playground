@@ -2,7 +2,7 @@
 
 set -e
 
-[ -z $TMPDIR ] && [ -d /tmp ] && TMPDIR="/tmp"
+[ -z "$TMPDIR" ] && [ -d /tmp ] && TMPDIR="/tmp"
 
 curl -sfSL https://go.ponces.xyz/apkmd | bash -s -- "$1" "$2" "$3"
 downFile="$(ls -Art | tail -n 1)"

@@ -8,7 +8,7 @@ if ! command -v lsb_release &> /dev/null; then
 fi
 
 [ "$(id -u)" -ne 0 ] && SUDO="sudo" || SUDO=""
-[ -z $TMPDIR ] && [ -d /tmp ] && TMPDIR="/tmp"
+[ -z "$TMPDIR" ] && [ -d /tmp ] && TMPDIR="/tmp"
 [ "$(uname -m)" = "aarch64" ] && ARCH="arm64" || ARCH="amd64"
 
 export PATH="$HOME/.local/bin:$PATH"

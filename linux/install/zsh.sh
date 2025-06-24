@@ -19,5 +19,10 @@ git clone -q --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git 
 
 if [ -f /etc/pam.d/chsh ]; then
     $SUDO sed 's/required/sufficient/g' -i /etc/pam.d/chsh
+fi
+
+if [ ! -z "$TERMUX_VERSION" ]; then
+    $SUDO chsh -s zsh $(whoami)
+else
     $SUDO chsh -s $(which zsh) $(whoami)
 fi
