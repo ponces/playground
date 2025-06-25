@@ -6,6 +6,11 @@ set -e
 [ -z "$TMPDIR" ] && [ -d /tmp ] && TMPDIR="/tmp"
 [ "$(uname -m)" = "aarch64" ] && ARCH="arm64" || ARCH="amd64"
 
+if [ ! -z "$TERMUX_VERSION" ]; then
+    curl -sfSL https://github.com/ponces/bitwarden-ssh-agent/raw/refs/heads/master/bw_add_sshkeys.py -o $HOME/.local/bin/bw_add_sshkeys
+    chmod +x $HOME/.local/bin/bw_add_sshkeys
+fi
+
 if [ ! -z "$TERMUX_VERSION" ] && command -v npm >/dev/null; then
     export GYP_DEFINES="android_ndk_path=''"
     npm install -g @bitwarden/cli
