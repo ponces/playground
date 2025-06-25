@@ -13,6 +13,7 @@ fi
 
 if [ ! -z "$TERMUX_VERSION" ] && command -v npm >/dev/null; then
     export GYP_DEFINES="android_ndk_path=''"
+    npm install -g semver
     npm install -g @bitwarden/cli
     exit 0
 fi
