@@ -8,19 +8,12 @@ function Update-EnvironmentPath {
     [Environment]::SetEnvironmentVariable("Path", $NewPath, "User")
 }
 
-winget install AgileBits.1Password Bitwarden.CLI Canonical.Ubuntu dbeaver.dbeaver Docker.DockerCLI `
-               Docker.DockerCompose Fortinet.FortiClientVPN Genymobile.scrcpy Git.Git Google.Chrome `
-               Google.PlatformTools Hashicorp.Vagrant JanDeDobbeleer.OhMyPosh jdx.mise jqlang.jq `
-               M2Team.NanaZip Microsoft.DotNet.SDK.3_1 Microsoft.DotNet.SDK.6 Microsoft.DotNet.SDK.8 `
+winget install Bitwarden.Bitwarden Canonical.Ubuntu Genymobile.scrcpy Git.Git Google.Chrome `
+               Google.PlatformTools JanDeDobbeleer.OhMyPosh jdx.mise jqlang.jq M2Team.NanaZip `
                Microsoft.PowerShell Microsoft.Teams Microsoft.Office Microsoft.VisualStudioCode `
-               OBSProject.OBSStudio okibcn.nano RedHat.OpenShift-Client RedHat.Podman RedHat.Podman-Desktop `
-               Starpine.Screenbox twpayne.chezmoi WinDirStat.WinDirStat WinMerge.WinMerge ZhornSoftware.Caffeine
+               OBSProject.OBSStudio okibcn.nano Starpine.Screenbox twpayne.chezmoi `
+               WinDirStat.WinDirStat WinMerge.WinMerge ZhornSoftware.Caffeine
 
-$env:BW_SESSION = (bw unlock --raw)
-if (-not $?)
-{
-    $env:BW_SESSION = (bw login --raw)
-}
 chezmoi init --apply ponces
 
 mise use --global gradle@8.6
@@ -44,7 +37,3 @@ if (-not (Test-Path $PROFILE)) {
 Add-Content -Path $PROFILE -Value "oh-my-posh init pwsh --config ""$env:POSH_THEMES_PATH\robbyrussell.omp.json"" | Invoke-Expression"
 Add-Content -Path $PROFILE -Value "Import-Module ""$env:APPDATA\posh-git\src\posh-git.psd1"""
 Add-Content -Path $PROFILE -Value "function sshcode() { code --remote ssh-remote+ubuild01 @Args }"
-
-setx ClientConfiguration__SecurityPortalBaseAddress "https://portalqa.criticalmanufacturing.dev/SecurityPortal/"
-setx ClientConfiguration__ClientTenantName "CustomerPortalQA"
-setx ClientConfiguration__HostAddress "portalqa.criticalmanufacturing.dev:443"
