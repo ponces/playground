@@ -37,3 +37,9 @@ if (-not (Test-Path $PROFILE)) {
 Add-Content -Path $PROFILE -Value "oh-my-posh init pwsh --config ""$env:POSH_THEMES_PATH\robbyrussell.omp.json"" | Invoke-Expression"
 Add-Content -Path $PROFILE -Value "Import-Module ""$env:APPDATA\posh-git\src\posh-git.psd1"""
 Add-Content -Path $PROFILE -Value "function sshcode() { code --remote ssh-remote+ponces@ubuild01.ponces.xyz @Args }"
+
+$ShortcutPath = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\Caffeine.lnk"
+$Shortcut = (New-Object -COMObject WScript.Shell).CreateShortcut($ShortcutPath)
+$Shortcut.TargetPath = (Get-Command caffeine64).Source
+$Shortcut.Arguments = "-startoff -stes"
+$Shortcut.Save()
