@@ -4,13 +4,16 @@ set -e
 
 [ -z "$TMPDIR" ] && [ -d /tmp ] && TMPDIR="/tmp"
 
+clean() {
+    rm -rf "$TMPDIR"/repo.zip
+    rm -rf "$TMPDIR"/repo
+}
+
+clean
 url="https://github.com/$1/$2/archive/refs/heads/$3.zip"
 if [ -z "$3" ]; then
     url="https://api.github.com/repos/$1/$2/zipball"
 fi
-
-rm -rf "$TMPDIR"/repo.zip
-rm -rf "$TMPDIR"/repo
 curl -sfSL "$url" -o "$TMPDIR"/repo.zip
 unzip -q "$TMPDIR"/repo.zip -d "$TMPDIR"/repo
 
@@ -39,3 +42,5 @@ elif [ -d release ]; then
 else
     cp -r "$TMPDIR"/repo/*/release ./release
 fi
+
+clean
