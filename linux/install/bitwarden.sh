@@ -7,7 +7,7 @@ set -e
 [ "$(uname -m)" = "aarch64" ] && ARCH="arm64" || ARCH="amd64"
 
 if [ ! -z "$TERMUX_VERSION" ]; then
-    curl -sfSL https://github.com/ponces/bitwarden-ssh-agent/raw/refs/heads/master/bw_add_sshkeys.py -o $HOME/.local/bin/bw_add_sshkeys
+    curl -sfSL https://raw.githubusercontent.com/ponces/bitwarden-ssh-agent/refs/heads/master/bw_add_sshkeys.py -o $HOME/.local/bin/bw_add_sshkeys
     chmod +x $HOME/.local/bin/bw_add_sshkeys
 fi
 
