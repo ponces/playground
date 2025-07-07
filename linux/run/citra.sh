@@ -5,7 +5,7 @@ set -e
 keybox="$1"
 
 if [ -z "$keybox" ]; then
-    keybox="blackbox"
+    keybox="sanctuary"
 fi
 
 random() {
