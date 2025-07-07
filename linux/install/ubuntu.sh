@@ -23,7 +23,7 @@ $SUDO apt-get install -y apache2-utils bash build-essential ca-certificates curl
                          ffmpeg git jq pipx python3 python3-dev python-is-python3 python3-pip \
                          python3-venv tar tree unzip wget xdg-utils xz-utils zip
 
-pipx install liblp payload_dumper telegram-upload yt-dlp
+pipx install liblp payload_dumper yt-dlp
 
 curl -sfSL https://go.ponces.xyz/bitwarden | bash
 export BW_SESSION="$(bw unlock --raw)"
