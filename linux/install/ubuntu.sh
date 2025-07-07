@@ -25,13 +25,8 @@ $SUDO apt-get install -y apache2-utils bash build-essential ca-certificates curl
 
 pipx install liblp payload_dumper yt-dlp
 
-curl -sfSL https://go.ponces.xyz/bitwarden | bash
-export BW_SESSION="$(bw unlock --raw)"
-if [ -z "$BW_SESSION" ]; then
-    export BW_SESSION=$(bw login --raw)
-fi
-
 curl -sfSL https://go.ponces.xyz/aosp | bash
+curl -sfSL https://go.ponces.xyz/bitwarden | bash
 curl -sfSL https://go.ponces.xyz/chezmoi | bash
 curl -sfSL https://go.ponces.xyz/docker | bash
 curl -sfSL https://go.ponces.xyz/ffsend | bash
@@ -49,7 +44,7 @@ mise use --global rust
 
 curl -sfSL https://go.ponces.xyz/android | bash
 
-res="$(cat /etc/X11/default-display-manager)"
+res="$(cat /etc/X11/default-display-manager 2>/dev/null || echo '')"
 if [[ "$res" == "/usr/sbin/gdm3" ]]; then
     $SUDO apt-get install -y file-roller
 

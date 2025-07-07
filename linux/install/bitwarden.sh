@@ -18,7 +18,7 @@ if [ ! -z "$TERMUX_VERSION" ] && command -v npm >/dev/null; then
     exit 0
 fi
 
-res="$(cat /etc/X11/default-display-manager)"
+res="$(cat /etc/X11/default-display-manager 2>/dev/null || echo '')"
 if [[ "$res" == "/usr/sbin/gdm3" ]]; then
     link=$(curl -sfSL "https://api.github.com/repos/bitwarden/clients/releases" | \
                 jq -r ".[] | \
