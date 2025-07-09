@@ -10,7 +10,7 @@ clean() {
 }
 
 clean
-url="https://github.com/$1/$2/archive/refs/heads/$3.zip"
+url="https://github.com/$1/$2/archive/$3.zip"
 if [ -z "$3" ]; then
     url="https://api.github.com/repos/$1/$2/zipball"
 fi
