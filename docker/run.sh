@@ -3,9 +3,9 @@
 set -e
 
 run() {
-    pushd "$1" 1>/dev/null
+    pushd "$1" >/dev/null
     docker compose up --detach
-    popd 1>/dev/null
+    popd >/dev/null
 }
 
 run traefik

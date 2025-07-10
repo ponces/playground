@@ -21,7 +21,7 @@ updateBranch() {
 
 updateRepo() {
     git clone ssh://git@github.com/TrebleDroid/"$1" -b "${oldBranch}-td" --single-branch
-    pushd "$1" 1>/dev/null
+    pushd "$1" >/dev/null
     repo="$(git remote get-url origin | sed -nE 's;.*/[Tt]reble[Dd]roid/(.*);\1;p' | tr _ /)"
     git remote add aosp https://android.googlesource.com/"$repo"
     git fetch --tags aosp
@@ -34,23 +34,23 @@ updateRepo() {
     fi
     git push -f origin "${newBranch}-td"
     updateBranch "$1" "${newBranch}-td"
-    popd 1>/dev/null
+    popd >/dev/null
 }
 
 validateRepo() {
     git clone -q ssh://git@github.com/TrebleDroid/"$1" -b "${newBranch}-td" --single-branch
-    pushd "$1" 1>/dev/null
+    pushd "$1" >/dev/null
     repo="$(git remote get-url origin | sed -nE 's;.*/[Tt]reble[Dd]roid/(.*);\1;p' | tr _ /)"
     git remote add aosp https://android.googlesource.com/"$repo"
-    git fetch --tags aosp 1>/dev/null
+    git fetch --tags aosp >/dev/null
     tag="$(git describe --abbrev=0 --match=android-1*)"
     printf "%-45s %-20s\n" "$1" "$tag"
-    popd 1>/dev/null
+    popd >/dev/null
 }
 
 rm -rf "$tmpDir"
 mkdir -p "$tmpDir"
-pushd "$tmpDir" 1>/dev/null
+pushd "$tmpDir" >/dev/null
 
 #git clone -q https://github.com/ponces/treble_aosp -b wip
 
@@ -66,5 +66,5 @@ grep -oP "platform_\w+" manifest.xml | while read repo; do
     validateRepo "$repo"
 done
 
-popd 1>/dev/null
+popd >/dev/null
 rm -rf "$tmpDir"
