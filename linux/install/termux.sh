@@ -24,8 +24,8 @@ mkdir -p $HOME/.local/share
 pkg update
 pkg upgrade -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"
 pkg install root-repo tur-repo x11-repo
-pkg install bash binutils code-server curl file git iproute2 jq nano ncurses-utils nodejs-lts \
-            openjdk-17 openssh openssl-tool python sudo termux-services tar unzip \
+pkg install bash binutils clang code-server curl file git iproute2 jq libffi make nano ncurses-utils \
+            nodejs-lts openjdk-17 openssh openssl openssl-tool python sudo termux-services tar unzip \
             wget which yarn zip zsh
 
 curl -sfSL https://go.ponces.xyz/chezmoi | bash
