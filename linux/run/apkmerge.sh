@@ -4,7 +4,7 @@ set -e
 
 [ -z "$TMPDIR" ] && [ -d /tmp ] && TMPDIR="/tmp"
 
-curl -sfSL https://go.ponces.xyz/apkmd | bash -s -- "$1" "$2" "$3"
+curl -sfSL https://go.ponces.dev/apkmd | bash -s -- "$1" "$2" "$3"
 downFile="$(ls -Art | tail -n 1)"
 
 if [[ "$downFile" == *".apk" ]]; then
@@ -15,7 +15,7 @@ elif [[ "$downFile" == *".apkm" ]]; then
                 wget -q -i - -O $TMPDIR/apkeditor.jar
         java -jar $TMPDIR/apkeditor.jar m -i "$downFile"
 
-        curl -sfSL https://go.ponces.xyz/keystore -o $TMPDIR/debug.keystore
+        curl -sfSL https://go.ponces.dev/keystore -o $TMPDIR/debug.keystore
         apksigner sign --ks $TMPDIR/debug.keystore --ks-pass pass:android "$downFile"
 else
     echo "No valid APK file found."

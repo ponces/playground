@@ -7,7 +7,7 @@ services:
       - web
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.wg-easy.rule=Host(`vpn.apps.ponces.xyz`)"
+      - "traefik.http.routers.wg-easy.rule=Host(`vpn.apps.ponces.dev`)"
       - "traefik.http.routers.wg-easy.entrypoints=websecure"
       - "traefik.http.routers.wg-easy.tls=true"
       - "traefik.http.routers.wg-easy.tls.certresolver=cloudflare"
@@ -15,7 +15,7 @@ services:
     volumes:
       - etc_wireguard:/etc/wireguard
     environment:
-      - WG_HOST=vpn.apps.ponces.xyz
+      - WG_HOST=vpn.apps.ponces.dev
       - PASSWORD_HASH=${WG_EASY_PASSWORD}
     ports:
       - 51820:51820/udp

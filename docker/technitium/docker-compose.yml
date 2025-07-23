@@ -7,18 +7,18 @@ services:
       - web
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.technitium.rule=Host(`dns.apps.ponces.xyz`)"
+      - "traefik.http.routers.technitium.rule=Host(`dns.apps.ponces.dev`)"
       - "traefik.http.routers.technitium.entrypoints=websecure"
       - "traefik.http.routers.technitium.tls=true"
       - "traefik.http.routers.technitium.tls.certresolver=cloudflare"
       - "traefik.http.services.technitium.loadbalancer.server.port=5380"
-      - "traefik.tcp.routers.technitium.rule=HostSNI(`dns.ponces.xyz`)"
+      - "traefik.tcp.routers.technitium.rule=HostSNI(`dns.ponces.dev`)"
       - "traefik.tcp.routers.technitium.entrypoints=dnsovertls"
       - "traefik.tcp.routers.technitium.tls=true"
       - "traefik.tcp.routers.technitium.tls.certresolver=cloudflare"
       - "traefik.tcp.services.technitium.loadbalancer.server.port=853"
     environment:
-      - DNS_SERVER_DOMAIN=dns.ponces.xyz
+      - DNS_SERVER_DOMAIN=dns.ponces.dev
       - DNS_SERVER_ADMIN_PASSWORD=${DNS_SERVER_ADMIN_PASSWORD}
     volumes:
       - config:/etc/dns

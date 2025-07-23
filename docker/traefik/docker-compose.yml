@@ -18,8 +18,7 @@ services:
       - "--entrypoints.websecure.address=:443"
       - "--entrypoints.websecure.http.tls=true"
       - "--entrypoints.websecure.http.tls.certresolver=cloudflare"
-      - "--entrypoints.websecure.http.tls.domains[0].main=apps.ponces.xyz"
-      - "--entrypoints.websecure.http.tls.domains[0].sans=*.apps.ponces.xyz"
+      - "--entrypoints.websecure.http.tls.domains[0].sans=*.apps.ponces.dev"
       - "--certificatesresolvers.cloudflare.acme.tlschallenge=true"
       - "--certificatesresolvers.cloudflare.acme.dnschallenge=true"
       - "--certificatesresolvers.cloudflare.acme.dnschallenge.provider=cloudflare"
@@ -37,7 +36,7 @@ services:
       - ./acme.json:/letsencrypt/acme.json
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.traefik.rule=Host(`traefik.apps.ponces.xyz`)"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.apps.ponces.dev`)"
       - "traefik.http.routers.traefik.entrypoints=websecure"
       - "traefik.http.routers.traefik.service=api@internal"
       - "traefik.http.routers.traefik.middlewares=traefik-auth"

@@ -25,13 +25,13 @@ $SUDO apt-get install -y apache2-utils bash build-essential ca-certificates curl
 
 pipx install liblp payload_dumper yt-dlp
 
-curl -sfSL https://go.ponces.xyz/aosp | bash
-curl -sfSL https://go.ponces.xyz/bitwarden | bash
-curl -sfSL https://go.ponces.xyz/chezmoi | bash
-curl -sfSL https://go.ponces.xyz/docker | bash
-curl -sfSL https://go.ponces.xyz/ffsend | bash
-curl -sfSL https://go.ponces.xyz/mise | bash
-curl -sfSL https://go.ponces.xyz/zsh | bash
+curl -sfSL https://go.ponces.dev/aosp | bash
+curl -sfSL https://go.ponces.dev/bitwarden | bash
+curl -sfSL https://go.ponces.dev/chezmoi | bash
+curl -sfSL https://go.ponces.dev/docker | bash
+curl -sfSL https://go.ponces.dev/ffsend | bash
+curl -sfSL https://go.ponces.dev/mise | bash
+curl -sfSL https://go.ponces.dev/zsh | bash
 
 mise use --global dotnet@8.0
 mise use --global gradle@8.6
@@ -42,7 +42,7 @@ mise use --global kubectl
 mise use --global node@20
 mise use --global rust
 
-curl -sfSL https://go.ponces.xyz/android | bash
+curl -sfSL https://go.ponces.dev/android | bash
 
 res="$(cat /etc/X11/default-display-manager 2>/dev/null || echo '')"
 if [[ "$res" == "/usr/sbin/gdm3" ]]; then

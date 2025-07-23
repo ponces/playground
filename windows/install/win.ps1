@@ -24,7 +24,7 @@ mise use --global kubectl
 mise use --global node@20
 
 New-Item -Path "$env:APPDATA\apktool" -ItemType Directory -Force | Out-Null
-curl -sfSL https://go.ponces.xyz/apktool -o "$env:APPDATA\apktool\apktool.ps1"
+curl -sfSL https://go.ponces.dev/apktool -o "$env:APPDATA\apktool\apktool.ps1"
 git clone -q https://github.com/dahlbyk/posh-git $env:APPDATA\posh-git
 oh-my-posh font install CascadiaCode
 
@@ -36,7 +36,7 @@ if (-not (Test-Path $PROFILE)) {
 }
 Add-Content -Path $PROFILE -Value "oh-my-posh init pwsh --config ""$env:POSH_THEMES_PATH\robbyrussell.omp.json"" | Invoke-Expression"
 Add-Content -Path $PROFILE -Value "Import-Module ""$env:APPDATA\posh-git\src\posh-git.psd1"""
-Add-Content -Path $PROFILE -Value "function sshcode() { code --remote ssh-remote+ponces@ubuild01.ponces.xyz @Args }"
+Add-Content -Path $PROFILE -Value "function sshcode() { code --remote ssh-remote+ponces@ubuild01.ponces.dev @Args }"
 
 $ShortcutPath = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\Caffeine.lnk"
 $Shortcut = (New-Object -COMObject WScript.Shell).CreateShortcut($ShortcutPath)

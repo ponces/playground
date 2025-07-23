@@ -11,4 +11,4 @@ if ! getent group docker >/dev/null; then
 fi
 $SUDO usermod -aG docker $USER
 
-curl -sfSL https://go.ponces.xyz/lazydocker | bash
+curl -sfSL https://go.ponces.dev/lazydocker | bash
