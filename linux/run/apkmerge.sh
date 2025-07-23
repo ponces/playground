@@ -4,8 +4,12 @@ set -e
 
 [ -z "$TMPDIR" ] && [ -d /tmp ] && TMPDIR="/tmp"
 
-curl -sfSL https://go.ponces.dev/apkmd | bash -s -- "$1" "$2" "$3"
-downFile="$(ls -Art | tail -n 1)"
+if [ "$#" -eq 1 ]; then
+    downFile="$1"
+else
+    curl -sfSL https://go.ponces.dev/apkmd | bash -s -- "$1" "$2" "$3"
+    downFile="$(ls -Art | tail -n 1)"
+fi
 
 if [[ "$downFile" == *".apk" ]]; then
     exit 0
