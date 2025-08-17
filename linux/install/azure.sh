@@ -6,7 +6,7 @@ set -e
 
 export PATH="$HOME/.local/bin:$PATH"
 
-if [ -z "$TERMUX_VERSION" ]; then
+if [ ! -z "$TERMUX_VERSION" ]; then
     pip install --user virtualenv
     virtualenv $HOME/.local/lib/azure-cli
     pushd $HOME/.local/lib/azure-cli >/dev/null
