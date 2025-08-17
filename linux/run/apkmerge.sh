@@ -17,7 +17,9 @@ elif [[ "$downFile" == *".apkm" ]]; then
         curl -sfSL https://api.github.com/repos/REAndroid/APKEditor/releases | \
                 jq -r '.[0].assets[] | .browser_download_url | select(endswith(".jar"))' | \
                 wget -q -i - -O $TMPDIR/apkeditor.jar
-        java -jar $TMPDIR/apkeditor.jar m -i "$downFile"
+        java -jar $TMPDIR/apkeditor.jar m -i "$downFile" -o $TMPDIR/tmp.apk
+        downFile="${downFile%.apkm}.apk"
+        mv $TMPDIR/tmp.apk "$downFile"
 
         curl -sfSL https://go.ponces.dev/keystore -o $TMPDIR/debug.keystore
         apksigner sign --ks $TMPDIR/debug.keystore --ks-pass pass:android "$downFile"
