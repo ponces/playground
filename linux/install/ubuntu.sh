@@ -26,12 +26,12 @@ $SUDO apt-get install -y apache2-utils bash build-essential ca-certificates curl
 pipx install liblp payload_dumper yt-dlp
 
 curl -sfSL https://go.ponces.dev/aosp | bash
-curl -sfSL https://go.ponces.dev/bitwarden | bash
 curl -sfSL https://go.ponces.dev/chezmoi | bash
 curl -sfSL https://go.ponces.dev/docker | bash
 curl -sfSL https://go.ponces.dev/ffsend | bash
 curl -sfSL https://go.ponces.dev/github | bash
 curl -sfSL https://go.ponces.dev/mise | bash
+curl -sfSL https://go.ponces.dev/rbw | bash
 curl -sfSL https://go.ponces.dev/zsh | bash
 
 mise use --global dotnet@8.0
