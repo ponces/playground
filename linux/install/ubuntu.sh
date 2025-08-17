@@ -30,6 +30,7 @@ curl -sfSL https://go.ponces.dev/bitwarden | bash
 curl -sfSL https://go.ponces.dev/chezmoi | bash
 curl -sfSL https://go.ponces.dev/docker | bash
 curl -sfSL https://go.ponces.dev/ffsend | bash
+curl -sfSL https://go.ponces.dev/github | bash
 curl -sfSL https://go.ponces.dev/mise | bash
 curl -sfSL https://go.ponces.dev/zsh | bash
 
@@ -41,6 +42,8 @@ mise use --global java@17
 mise use --global kubectl
 mise use --global node@20
 mise use --global rust
+
+eval "$($HOME/.local/bin/mise activate bash)"
 
 curl -sfSL https://go.ponces.dev/android | bash
 
@@ -92,6 +95,14 @@ if [[ "$res" == "/usr/sbin/gdm3" ]]; then
     $SUDO dpkg -i $TMPDIR/ferdium.deb
 fi
 
-if [ -n "$WSL_DISTRO_NAME" ]; then
-    printf "[boot]\nsystemd = true\n\n[network]\nhostname = ubuntu\n" | $SUDO tee /etc/wsl.conf
+if [ ! -z "$WSL_DISTRO_NAME" ]; then
+    if ! grep -q "systemd" /etc/wsl.conf; then
+        printf "\n[boot]\nsystemd = true\n" | $SUDO tee -a /etc/wsl.conf
+    fi
+    if ! grep -q "hostname" /etc/wsl.conf; then
+        printf "\n[network]\nhostname = ubuntu\n" | $SUDO tee -a /etc/wsl.conf
+    fi
+    if ! grep -q "default" /etc/wsl.conf; then
+        printf "\n[user]\ndefault = ponces\n" | $SUDO tee -a /etc/wsl.conf
+    fi
 fi
