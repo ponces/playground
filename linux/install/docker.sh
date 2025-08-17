@@ -4,7 +4,7 @@ set -e
 
 [ "$(id -u)" -ne 0 ] && SUDO="sudo" || SUDO=""
 
-curl -sfSL https://get.docker.com | $SUDO bash
+curl -sfSL https://get.docker.com | sed 's/icrosoft/icrohard/g' | $SUDO bash
 
 if ! getent group docker >/dev/null; then
     $SUDO groupadd -g 999 docker
