@@ -25,10 +25,18 @@ mise use --global node@20
 
 New-Item -Path "$env:APPDATA\apktool" -ItemType Directory -Force | Out-Null
 curl -sfSL https://go.ponces.dev/apktool -o "$env:APPDATA\apktool\apktool.ps1"
+
+$downloadUrl="https://nightly.link/mpv-player/mpv/workflows/build/master/mpv-x86_64-pc-windows-msvc.zip"
+New-Item -Path "$env:APPDATA\mpv" -ItemType Directory -Force | Out-Null
+Invoke-WebRequest -Uri $downloadUrl -OutFile "$env:APPDATA\mpv\mpv.zip"
+Expand-Archive -Path "$env:APPDATA\mpv\mpv.zip" -DestinationPath "$env:APPDATA\mpv" -Force
+Remove-Item -Path "$env:APPDATA\mpv\mpv.zip" -Force
+
 git clone -q https://github.com/dahlbyk/posh-git $env:APPDATA\posh-git
 oh-my-posh font install CascadiaCode
 
 Update-EnvironmentPath -Directory "$env:APPDATA\apktool"
+Update-EnvironmentPath -Directory "$env:APPDATA\mpv"
 Update-EnvironmentPath -Directory "$env:LOCALAPPDATA\mise\shims"
 
 if (-not (Test-Path $PROFILE)) {
