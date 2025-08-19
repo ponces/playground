@@ -7,10 +7,7 @@ set -e
 rm -rf $HOME/.zshrc*
 rm -rf $HOME/.oh-my-zsh
 
-if ! command -v zsh >/dev/null; then
-    $SUDO apt-get update
-    $SUDO apt-get install -y zsh
-fi
+piu install -y zsh
 
 yes | sh -c "$(curl -sfSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 sed -i 's/# export PATH/export PATH/' $HOME/.zshrc

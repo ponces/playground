@@ -31,6 +31,7 @@ curl -sfSL https://go.ponces.dev/docker | bash
 curl -sfSL https://go.ponces.dev/ffsend | bash
 curl -sfSL https://go.ponces.dev/github | bash
 curl -sfSL https://go.ponces.dev/mise | bash
+curl -sfSL https://go.ponces.dev/piu | bash
 curl -sfSL https://go.ponces.dev/rbw | bash
 curl -sfSL https://go.ponces.dev/zsh | bash
 
