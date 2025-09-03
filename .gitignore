@@ -1,3 +1,4 @@
+*.base
 *.cc
 *.conf
 *.cpp
@@ -10,11 +11,13 @@
 *.exe
 *.h
 *.img
+*.iso
 *.jar
 *.jks
 *.json
 *.keystore
 *.log
+*.mac
 *.mk
 *.p12
 *.pem
@@ -23,9 +26,12 @@
 *.pub
 *.py
 *.rpm
+*.rom
 *.so
 *.tar
 *.tar.gz
+*.vars
+*.ver
 *.xml
 *.xz
 *.zip
