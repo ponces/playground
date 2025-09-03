@@ -7,9 +7,9 @@ set -e
 ANDROID_HOME="$HOME/.android/sdk"
 mkdir -p $ANDROID_HOME
 
-curl -sfSL https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -o $TMPDIR/commandlinetools-linux.zip
-unzip -q $TMPDIR/commandlinetools-linux.zip -d $TMPDIR/cmdline-tools
-rm -f $TMPDIR/commandlinetools-linux.zip
+curl -sfSL https://dl.google.com/android/repository/commandlinetools-linux-13114758_latest.zip -o $TMPDIR/sdk.zip
+unzip -q $TMPDIR/sdk.zip -d $TMPDIR/cmdline-tools
+rm -f $TMPDIR/sdk.zip
 mv $TMPDIR/cmdline-tools/cmdline-tools $TMPDIR/cmdline-tools/latest
 cp -r $TMPDIR/cmdline-tools $ANDROID_HOME
 

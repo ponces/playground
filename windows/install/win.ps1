@@ -6,16 +6,22 @@ winget install Bitwarden.Bitwarden Canonical.Ubuntu Git.Git Google.Chrome Google
                WinMerge.WinMerge
 
 irm https://go.ponces.dev/caffeine | iex
-irm https://go.ponces.dev/chezmoi | iex
-irm https://go.ponces.dev/mise | iex
+irm https://go.ponces.dev/chezmoiw | iex
+irm https://go.ponces.dev/misew | iex
 irm https://go.ponces.dev/mpv | iex
 irm https://go.ponces.dev/pwsh | iex
 irm https://go.ponces.dev/surfshark | iex
 
-New-Item -Path "$env:APPDATA/apktool" -ItemType Directory -Force | Out-Null
-curl -sfSL https://go.ponces.dev/apktool -o "$env:APPDATA/apktool/apktool.ps1"
+mise use --global gradle@8.6
+mise use --global java@17
+mise use --global node@20
+
+mise activate pwsh | Out-String | Invoke-Expression
+
+irm https://go.ponces.dev/androidw | iex
 
 if (-not (Test-Path $PROFILE)) {
     New-Item $PROFILE -Type File -ErrorAction Stop -Force | Out-Null
 }
+Add-Content -Path $PROFILE -Value "mise activate pwsh | Out-String | Invoke-Expression"
 Add-Content -Path $PROFILE -Value "function sshcode() { code --remote ssh-remote+ponces@ubuild01.ponces.dev @Args }"
