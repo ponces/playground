@@ -10,9 +10,6 @@ More info [here](https://github.com/dockur/macos).
 cp .env.template .env
 cat .env
 # MACOS_PASSWORD=
-
-# Generate a credentials string
-docker run --rm httpd:2.4 htpasswd -nbB <user> <pass> | sed -e 's/\$/\$\$/g'
 ```
 
 ## Install
