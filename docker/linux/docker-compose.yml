@@ -1,0 +1,31 @@
+services:
+  linux:
+    image: qemux/qemu
+    container_name: linux
+    restart: unless-stopped
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.linux.rule=Host(`linux.apps.ponces.dev`)"
+      - "traefik.http.routers.linux.entrypoints=websecure"
+      - "traefik.http.routers.linux.tls=true"
+      - "traefik.http.routers.linux.tls.certresolver=cloudflare"
+      - "traefik.http.services.linux.loadbalancer.server.port=8006"
+    volumes:
+      - ./linux:/storage
+    environment:
+      BOOT: alpine
+      DISK_SIZE: 64G
+      RAM_SIZE: 4G
+      CPU_CORES: 2
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/kvm
+      - /dev/net/tun
+    stop_grace_period: 2m
+
+networks:
+  web:
+    external: true
