@@ -11,7 +11,8 @@ stop() {
 stop traefik
 stop filebrowser
 stop github-runner
-#stop ollama
+# stop ollama
 stop portainer
-#stop technitium
-#stop wg-easy
+# stop technitium
+# stop wg-easy
+# stop windows

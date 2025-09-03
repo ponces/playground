@@ -11,7 +11,8 @@ run() {
 run traefik
 run filebrowser
 run github-runner
-#run ollama
+# run ollama
 run portainer
-#run technitium
-#run wg-easy
+# run technitium
+# run wg-easy
+# run windows

@@ -1,0 +1,39 @@
+services:
+  windows:
+    image: dockurr/windows
+    container_name: windows
+    restart: unless-stopped
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.windows.rule=Host(`windows.apps.ponces.dev`)"
+      - "traefik.http.routers.windows.entrypoints=websecure"
+      - "traefik.http.routers.windows.tls=true"
+      - "traefik.http.routers.windows.tls.certresolver=cloudflare"
+      - "traefik.http.services.windows.loadbalancer.server.port=8006"
+    volumes:
+      - ./windows:/storage
+    environment:
+      VERSION: 11
+      DISK_SIZE: 64G
+      RAM_SIZE: 4G
+      CPU_CORES: 2
+      USERNAME: ponces
+      PASSWORD: ${WINDOWS_PASSWORD}
+      LANGUAGE: English
+      REGION: en-US
+      KEYBOARD: en-PT
+    ports:
+      - 3389:3389/tcp
+      - 3389:3389/udp
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/kvm
+      - /dev/net/tun
+    stop_grace_period: 2m
+
+networks:
+  web:
+    external: true
