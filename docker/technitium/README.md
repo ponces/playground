@@ -12,7 +12,7 @@ cat .env
 # DNS_SERVER_ADMIN_PASSWORD=
 
 # Generate a credentials string
-docker run --rm httpd:2.4 htpasswd -nbB <pass> | sed -e 's/\$/\$\$/g'
+docker run --rm httpd:2.4 htpasswd -nbB <user> <pass> | sed -e 's/\$/\$\$/g'
 ```
 
 ## Install
