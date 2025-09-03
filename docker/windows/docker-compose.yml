@@ -3,15 +3,15 @@ services:
     image: dockurr/windows
     container_name: windows
     restart: unless-stopped
-    networks:
-      - web
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.windows.rule=Host(`windows.apps.ponces.dev`)"
-      - "traefik.http.routers.windows.entrypoints=websecure"
-      - "traefik.http.routers.windows.tls=true"
-      - "traefik.http.routers.windows.tls.certresolver=cloudflare"
-      - "traefik.http.services.windows.loadbalancer.server.port=8006"
+    # networks:
+    #   - web
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.windows.rule=Host(`windows.apps.ponces.dev`)"
+    #   - "traefik.http.routers.windows.entrypoints=websecure"
+    #   - "traefik.http.routers.windows.tls=true"
+    #   - "traefik.http.routers.windows.tls.certresolver=cloudflare"
+    #   - "traefik.http.services.windows.loadbalancer.server.port=8006"
     volumes:
       - ./windows:/storage
     environment:
@@ -25,6 +25,7 @@ services:
       REGION: en-US
       KEYBOARD: en-PT
     ports:
+      - 8006:8006
       - 3389:3389/tcp
       - 3389:3389/udp
     cap_add:
@@ -34,6 +35,6 @@ services:
       - /dev/net/tun
     stop_grace_period: 2m
 
-networks:
-  web:
-    external: true
+# networks:
+#   web:
+#     external: true
