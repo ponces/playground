@@ -1,4 +1,4 @@
 $ErrorActionPreference = 'Stop'
 
 winget install twpayne.chezmoi
-chezmoi init --apply ponces
+chezmoi init --apply ponces --promptDefaults
