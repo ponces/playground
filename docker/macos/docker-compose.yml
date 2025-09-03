@@ -1,0 +1,34 @@
+services:
+  macos:
+    image: dockurr/macos
+    container_name: macos
+    restart: unless-stopped
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.macos.rule=Host(`macos.apps.ponces.dev`)"
+      - "traefik.http.routers.macos.entrypoints=websecure"
+      - "traefik.http.routers.macos.tls=true"
+      - "traefik.http.routers.macos.tls.certresolver=cloudflare"
+      - "traefik.http.services.macos.loadbalancer.server.port=8006"
+    volumes:
+      - ./macos:/storage
+    environment:
+      VERSION: 13
+      DISK_SIZE: 64G
+      RAM_SIZE: 4G
+      CPU_CORES: 2
+    ports:
+      - 5900:5900/tcp
+      - 5900:5900/udp
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/kvm
+      - /dev/net/tun
+    stop_grace_period: 2m
+
+networks:
+  web:
+    external: true
