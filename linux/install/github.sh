@@ -10,7 +10,7 @@ if [ ! -z "$TERMUX_VERSION" ]; then
 else
     url=$(curl -sfSL https://api.github.com/repos/cli/cli/releases/latest | \
                 jq -r ".assets[] | \
-                    select(.name | endswith(\"_linux_$ARCH.tar.gz\")) | \
+                    select(.name | endswith(\"_linux_${ARCH}.tar.gz\")) | \
                     .browser_download_url" | \
                 head -1)
     curl -sfSL "$url" -o $TMPDIR/github.tar.gz

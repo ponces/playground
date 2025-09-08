@@ -7,7 +7,7 @@ set -e
 
 url=$(curl -sfSL https://api.github.com/repos/jesseduffield/lazydocker/releases/latest | \
             jq -r ".assets[] | \
-                select(.name | endswith(\"_Linux_$ARCH.tar.gz\")) | \
+                select(.name | endswith(\"_Linux_${ARCH}.tar.gz\")) | \
                 .browser_download_url" | \
             head -1)
 curl -sfSL "$url" -o $TMPDIR/lazydocker.tar.gz

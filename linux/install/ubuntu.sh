@@ -90,7 +90,7 @@ if [[ "$res" == "/usr/sbin/gdm3" ]]; then
 
     url=$(curl -sfSL https://api.github.com/repos/ferdium/ferdium-app/releases/latest | \
                 jq -r ".assets[] | \
-                    select(.name | endswith(\"$ARCH.deb\")) | \
+                    select(.name | endswith(\"-${ARCH}.deb\")) | \
                     .browser_download_url" | \
                 head -1)
     curl -sfSL "$url" -o $TMPDIR/ferdium.deb
