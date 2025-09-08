@@ -11,9 +11,5 @@ url=$(curl -sfSL https://api.github.com/repos/yorukot/superfile/releases/latest 
                 .browser_download_url" | \
             head -1)
 curl -sfSL "$url" -o $TMPDIR/superfile.tar.gz
-tar -xzf $TMPDIR/superfile.tar.gz -C $TMPDIR
+tar -xzf $TMPDIR/superfile.tar.gz -C $HOME/.local/bin --strip-components=3
 rm -f $TMPDIR/superfile.tar.gz
-
-cp -f $TMPDIR/dist/superfile-linux-*/spf $HOME/.local/bin/spf
-chmod +x $HOME/.local/bin/spf
-rm -rf $TMPDIR/dist
