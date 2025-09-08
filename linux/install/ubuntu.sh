@@ -15,7 +15,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 $SUDO apt-get update
 $SUDO apt-get upgrade -y
-$SUDO apt-get install -y apache2-utils build-essential ca-certificates dnsutils ffmpeg pipx \
+$SUDO apt-get install -y apache2-utils build-essential ca-certificates ccze dnsutils ffmpeg pipx \
                          python3 python3-dev python-is-python3 python3-pip python3-venv xdg-utils
 
 pipx install liblp payload_dumper yt-dlp
