@@ -5,7 +5,7 @@ set -e
 [ -z "$DEBUG" ] && DEBUG=true
 [ -z "$TMPDIR" ] && [ -d /tmp ] && TMPDIR="/tmp"
 [ -z "$FORCE_DEPTH" ] && FORCE_DEPTH=1
-[ -z "$FORCE_PREVIEW" ] && FORCE_PREVIEW=0
+[ -z "$FORCE_TOP" ] && FORCE_TOP=1
 
 $DEBUG && echo "Pixel Beta pif.json generator script by osm0sis @ xda-developers"
 
@@ -13,18 +13,10 @@ $DEBUG && echo "Crawling Android Developers for latest Pixel Beta..."
 URL="https://developer.android.com/about/versions"
 curl -sfSL "$URL" -o $TMPDIR/PIXEL_VERSIONS_HTML
 
-URL="$(grep -o 'https://developer.android.com/about/versions/.*[0-9]"' $TMPDIR/PIXEL_VERSIONS_HTML | sort -ru | cut -d\" -f1 | head -n1)"
+URL="$(grep -o 'https://developer.android.com/about/versions/.*[0-9]"' $TMPDIR/PIXEL_VERSIONS_HTML | sort -ru | cut -d\" -f1 | head -n$FORCE_TOP | tail -n1)"
 curl -sfSL "$URL" -o $TMPDIR/PIXEL_LATEST_HTML
 
-if [ ! "$FORCE_PREVIEW" ] && grep -qE 'Developer Preview|tooltip>.*preview program' $TMPDIR/PIXEL_LATEST_HTML; then
-    URL="$(grep -o 'https://developer.android.com/about/versions/.*[0-9]"' $TMPDIR/PIXEL_VERSIONS_HTML | sort -ru | cut -d\" -f1 | head -n2 | tail -n1)"
-    curl -sfSL "$URL" -o $TMPDIR/PIXEL_BETA_HTML
-else
-    TITLE="Preview"
-    mv -f $TMPDIR/PIXEL_LATEST_HTML $TMPDIR/PIXEL_BETA_HTML
-fi
-
-SUFFIX="$(grep -o 'href=".*download-ota.*"' $TMPDIR/PIXEL_BETA_HTML | cut -d\" -f2 | head -n$FORCE_DEPTH | tail -n1)"
+SUFFIX="$(grep -o 'href=".*download-ota.*"' $TMPDIR/PIXEL_LATEST_HTML | grep 'qpr' | cut -d\" -f2 | head -n$FORCE_DEPTH | tail -n1)"
 URL="https://developer.android.com$SUFFIX"
 curl -sfSL "$URL" -o $TMPDIR/PIXEL_OTA_HTML
 
