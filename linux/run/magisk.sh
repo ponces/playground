@@ -38,7 +38,7 @@ mkdir -p "$outDir"/META-INF/com/google/android
 cp -r "$contentDir"/* "$outDir"
 
 echo "#MAGISK" > "$outDir"/META-INF/com/google/android/updater-script
-wget -q https://github.com/topjohnwu/Magisk/raw/master/scripts/module_installer.sh -O "$outDir"/META-INF/com/google/android/update-binary
+curl -sfSL https://raw.githubusercontent.com/topjohnwu/Magisk/master/scripts/module_installer.sh -o "$outDir"/META-INF/com/google/android/update-binary
 
 {
     echo "id=$moduleId"

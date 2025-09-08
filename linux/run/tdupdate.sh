@@ -8,8 +8,8 @@ tmpDir="$TMPDIR/tdupdate"
 baseBranch="android-16.0"
 oldBranch="${baseBranch}.0_r1"
 newBranch="${baseBranch}.0_r2"
-manifest1="https://github.com/TrebleDroid/treble_manifest/raw/$baseBranch/manifest.xml"
-manifest2="https://github.com/TrebleDroid/treble_manifest/raw/$baseBranch/replace.xml"
+manifest1="https://raw.githubusercontent.com/TrebleDroid/treble_manifest/$baseBranch/manifest.xml"
+manifest2="https://raw.githubusercontent.com/TrebleDroid/treble_manifest/$baseBranch/replace.xml"
 
 updateBranch() {
     curl -s -o /dev/null \

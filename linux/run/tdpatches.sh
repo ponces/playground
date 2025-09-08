@@ -18,5 +18,5 @@ fi
 
 repo sync -c --force-sync --no-clone-bundle --no-tags -j$(nproc --all) || repo sync -c --force-sync --no-clone-bundle --no-tags -j$(nproc --all)
 
-wget -q https://github.com/TrebleDroid/treble_experimentations/raw/master/list-patches.sh -O list-patches.sh
+curl -sfSL https://raw.githubusercontent.com/TrebleDroid/treble_experimentations/master/list-patches.sh -o list-patches.sh
 bash list-patches.sh

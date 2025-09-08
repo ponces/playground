@@ -2,5 +2,10 @@
 
 set -e
 
-curl -sfSL https://api.github.com/repos/timvisee/ffsend/releases/latest | grep browser_download_url | cut -d '"' -f 4 | grep "linux-x64-static" | wget -O $HOME/.local/bin/ffsend -qi -
+url=$(curl -sfSL "https://api.github.com/repos/timvisee/ffsend/releases/latest" | \
+            jq -r ".assets[] | \
+                select(.name | endswith(\"linux-x64-static\")) | \
+                .browser_download_url" | \
+            head -1)
+curl -sfSL "$url" -o $HOME/.local/bin/ffsend
 chmod +x $HOME/.local/bin/ffsend

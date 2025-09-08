@@ -88,11 +88,12 @@ if [[ "$res" == "/usr/sbin/gdm3" ]]; then
     $SUDO dpkg -i $TMPDIR/vpn.deb
     rm -f $TMPDIR/vpn.deb
 
-    link=$(curl -sfSL "https://api.github.com/repos/ferdium/ferdium-app/releases/latest" | \
+    url=$(curl -sfSL "https://api.github.com/repos/ferdium/ferdium-app/releases/latest" | \
                 jq -r ".assets[] | \
                     select(.name | endswith(\"$ARCH.deb\")) | \
-                    .browser_download_url")
-    curl -sfSL "$link" -o $TMPDIR/ferdium.deb
+                    .browser_download_url" | \
+                head -1)
+    curl -sfSL "$url" -o $TMPDIR/ferdium.deb
     $SUDO dpkg -i $TMPDIR/ferdium.deb
 fi
 

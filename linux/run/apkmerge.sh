@@ -17,15 +17,17 @@ fi
 if [[ "$downFile" == *".apk" ]]; then
     exit 0
 elif [[ "$downFile" == *".apkm" ]] || [[ "$downFile" == *".xapk" ]]; then
-        curl -sfSL https://api.github.com/repos/REAndroid/APKEditor/releases | \
-                jq -r '.[0].assets[] | .browser_download_url | select(endswith(".jar"))' | \
-                wget -q -i - -O $TMPDIR/apkeditor.jar
-        java -jar $TMPDIR/apkeditor.jar m -i "$downFile" -o $TMPDIR/tmp.apk
-        downFile="${downFile%.*}.apk"
-        mv $TMPDIR/tmp.apk "$downFile"
-
-        curl -sfSL https://go.ponces.dev/keystore -o $TMPDIR/debug.keystore
-        apksigner sign --ks $TMPDIR/debug.keystore --ks-pass pass:android "$downFile"
+    url=$(curl -sfSL "https://api.github.com/repos/REAndroid/APKEditor/releases/latest" | \
+                jq -r ".assets[] | \
+                    select(.name | endswith(\".jar\")) | \
+                    .browser_download_url" | \
+                head -1)
+    curl -sfSL "$url" -o $TMPDIR/apkeditor.jar
+    java -jar $TMPDIR/apkeditor.jar m -i "$downFile" -o $TMPDIR/tmp.apk
+    downFile="${downFile%.*}.apk"
+    mv $TMPDIR/tmp.apk "$downFile"
+    curl -sfSL https://go.ponces.dev/keystore -o $TMPDIR/debug.keystore
+    apksigner sign --ks $TMPDIR/debug.keystore --ks-pass pass:android "$downFile"
 else
     echo "No valid APK file found."
     exit 1
