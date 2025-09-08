@@ -20,7 +20,7 @@ fi
 
 res="$(cat /etc/X11/default-display-manager 2>/dev/null || echo '')"
 if [[ "$res" == "/usr/sbin/gdm3" ]]; then
-    url=$(curl -sfSL "https://api.github.com/repos/bitwarden/clients/releases" | \
+    url=$(curl -sfSL https://api.github.com/repos/bitwarden/clients/releases | \
                 jq -r ".[] | \
                     select(.name | startswith(\"Desktop\")) | \
                     .assets[] | \
@@ -32,7 +32,7 @@ if [[ "$res" == "/usr/sbin/gdm3" ]]; then
     rm -f $TMPDIR/bw.deb
 fi
 
-url=$(curl -sfSL "https://api.github.com/repos/bitwarden/clients/releases" | \
+url=$(curl -sfSL https://api.github.com/repos/bitwarden/clients/releases | \
             jq -r ".[] | \
                 select(.name | startswith(\"CLI\")) | \
                 .assets[] | \
@@ -45,7 +45,7 @@ unzip -joq $TMPDIR/bw.zip bw -d $HOME/.local/bin
 rm -f $TMPDIR/bw.zip
 chmod +x $HOME/.local/bin/bw
 
-url=$(curl -sfSL "https://api.github.com/repos/bitwarden/sdk-sm/releases" | \
+url=$(curl -sfSL https://api.github.com/repos/bitwarden/sdk-sm/releases | \
             jq -r ".[] | \
                 select(.name | startswith(\"bws CLI\")) | \
                 .assets[] | \

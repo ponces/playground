@@ -6,7 +6,7 @@ set -e
 [ "$(uname -m)" = "aarch64" ] && ARCH="arm64" || ARCH="amd64"
 [ ! -z "$TERMUX_VERSION" ] && OS="linux-android" || OS="linux"
 
-url=$(curl -sfSL "https://api.github.com/repos/ponces/bitchat-terminal/releases/latest" | \
+url=$(curl -sfSL https://api.github.com/repos/ponces/bitchat-terminal/releases/latest | \
             jq -r ".assets[] | \
                 select(.name | endswith(\"_${OS}_${ARCH}.tar.gz\")) | \
                 .browser_download_url" | \

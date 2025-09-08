@@ -17,7 +17,7 @@ rm -rf $TMPDIR/cmdline-tools
 
 yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "build-tools;35.0.0" "cmake;3.31.1" "ndk;27.1.12297006" "platform-tools" "platforms;android-35"
 
-url=$(curl -sfSL "https://api.github.com/repos/iBotPeaches/Apktool/releases/latest" | \
+url=$(curl -sfSL https://api.github.com/repos/iBotPeaches/Apktool/releases/latest | \
         jq -r ".assets[] | \
             select(.name | endswith(\".jar\")) | \
             .browser_download_url" | \

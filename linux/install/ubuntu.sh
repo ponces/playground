@@ -76,7 +76,7 @@ if [[ "$res" == "/usr/sbin/gdm3" ]]; then
     $SUDO udevadm control --reload
     $SUDO udevadm trigger
 
-    curl -sfSL https://dl.google.com/linux/direct/google-chrome-stable_current_$ARCH.deb -o $TMPDIR/chrome.deb
+    curl -sfSL "https://dl.google.com/linux/direct/google-chrome-stable_current_${ARCH}.deb" -o $TMPDIR/chrome.deb
     $SUDO dpkg -i $TMPDIR/chrome.deb
     rm -f $TMPDIR/chrome.deb
 
@@ -88,7 +88,7 @@ if [[ "$res" == "/usr/sbin/gdm3" ]]; then
     $SUDO dpkg -i $TMPDIR/vpn.deb
     rm -f $TMPDIR/vpn.deb
 
-    url=$(curl -sfSL "https://api.github.com/repos/ferdium/ferdium-app/releases/latest" | \
+    url=$(curl -sfSL https://api.github.com/repos/ferdium/ferdium-app/releases/latest | \
                 jq -r ".assets[] | \
                     select(.name | endswith(\"$ARCH.deb\")) | \
                     .browser_download_url" | \

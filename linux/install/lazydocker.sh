@@ -5,7 +5,7 @@ set -e
 [ -z "$TMPDIR" ] && [ -d /tmp ] && TMPDIR="/tmp"
 [ "$(uname -m)" = "aarch64" ] && ARCH="arm64" || ARCH="x86_64"
 
-url=$(curl -sfSL "https://api.github.com/repos/jesseduffield/lazydocker/releases/latest" | \
+url=$(curl -sfSL https://api.github.com/repos/jesseduffield/lazydocker/releases/latest | \
             jq -r ".assets[] | \
                 select(.name | endswith(\"_Linux_$ARCH.tar.gz\")) | \
                 .browser_download_url" | \

@@ -8,7 +8,7 @@ set -e
 if [ ! -z "$TERMUX_VERSION" ]; then
     pkg install gh
 else
-    url=$(curl -sfSL "https://api.github.com/repos/cli/cli/releases/latest" | \
+    url=$(curl -sfSL https://api.github.com/repos/cli/cli/releases/latest | \
                 jq -r ".assets[] | \
                     select(.name | endswith(\"_linux_$ARCH.tar.gz\")) | \
                     .browser_download_url" | \

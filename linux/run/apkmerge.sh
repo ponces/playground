@@ -17,7 +17,7 @@ fi
 if [[ "$downFile" == *".apk" ]]; then
     exit 0
 elif [[ "$downFile" == *".apkm" ]] || [[ "$downFile" == *".xapk" ]]; then
-    url=$(curl -sfSL "https://api.github.com/repos/REAndroid/APKEditor/releases/latest" | \
+    url=$(curl -sfSL https://api.github.com/repos/REAndroid/APKEditor/releases/latest | \
                 jq -r ".assets[] | \
                     select(.name | endswith(\".jar\")) | \
                     .browser_download_url" | \
