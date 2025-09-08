@@ -6,6 +6,8 @@ export PATH="$HOME/.local/bin:$PATH"
 
 mkdir -p $HOME/.local/bin
 mkdir -p $HOME/.local/etc
+mkdir -p $HOME/.local/lib
+mkdir -p $HOME/.local/lib64
 mkdir -p $HOME/.local/share
 
 curl -sfSL https://go.ponces.dev/piu | bash
