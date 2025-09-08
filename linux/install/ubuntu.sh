@@ -13,19 +13,15 @@ fi
 
 export PATH="$HOME/.local/bin:$PATH"
 
-mkdir -p $HOME/.config
-mkdir -p $HOME/.local/bin
-mkdir -p $HOME/.local/share
-
 $SUDO apt-get update
 $SUDO apt-get upgrade -y
-$SUDO apt-get install -y apache2-utils bash build-essential ca-certificates curl dnsutils dos2unix \
-                         ffmpeg git jq pipx python3 python3-dev python-is-python3 python3-pip \
-                         python3-venv tar tree unzip wget xdg-utils xz-utils zip
+$SUDO apt-get install -y apache2-utils build-essential ca-certificates dnsutils ffmpeg pipx \
+                         python3 python3-dev python-is-python3 python3-pip python3-venv xdg-utils
 
 pipx install liblp payload_dumper yt-dlp
 
 curl -sfSL https://go.ponces.dev/aosp | bash
+curl -sfSL https://go.ponces.dev/base | bash
 curl -sfSL https://go.ponces.dev/chezmoi | bash
 curl -sfSL https://go.ponces.dev/docker | bash
 curl -sfSL https://go.ponces.dev/ffsend | bash

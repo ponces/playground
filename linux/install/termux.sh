@@ -17,17 +17,13 @@ fi
 
 export PATH="$HOME/.local/bin:$PATH"
 
-mkdir -p $HOME/.config
-mkdir -p $HOME/.local/bin
-mkdir -p $HOME/.local/share
-
 pkg update
 pkg upgrade -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"
 pkg install root-repo tur-repo x11-repo
-pkg install bash binutils clang code-server curl file git iproute2 jq libffi make nano ncurses-utils \
-            nodejs-lts openjdk-17 openssh openssl openssl-tool python sudo termux-services tar unzip \
-            wget which yarn zip zsh
+pkg install clang code-server iproute2 libffi ncurses-utils nodejs-lts openjdk-17 openssh \
+            openssl openssl-tool python termux-services which yarn
 
+curl -sfSL https://go.ponces.dev/base | bash
 curl -sfSL https://go.ponces.dev/chezmoi | bash
 curl -sfSL https://go.ponces.dev/ffsend | bash
 curl -sfSL https://go.ponces.dev/github | bash

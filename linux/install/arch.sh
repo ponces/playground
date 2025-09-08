@@ -6,10 +6,6 @@ set -e
 
 export PATH="$HOME/.local/bin:$PATH"
 
-mkdir -p $HOME/.config
-mkdir -p $HOME/.local/bin
-mkdir -p $HOME/.local/share
-
 $SUDO pacman -Syyu --noconfirm
 $SUDO pacman -S --noconfirm adapta-gtk-theme android-tools android-udev chrome-gnome-shell \
                            gdm gimp gparted htop npm steam tlp vlc youtube-dl
@@ -22,6 +18,7 @@ yaourt -S --noconfirm ferdium-bin google-chrome gyp-git insync insync-nautilus \
 $SUDO pacman -Rns $(pacman -Qtdq) --noconfirm
 
 curl -sfSL https://go.ponces.dev/aosp | bash
+curl -sfSL https://go.ponces.dev/base | bash
 curl -sfSL https://go.ponces.dev/chezmoi | bash
 curl -sfSL https://go.ponces.dev/docker | bash
 curl -sfSL https://go.ponces.dev/ffsend | bash
