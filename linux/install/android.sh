@@ -4,6 +4,8 @@ set -e
 
 [ -z "$TMPDIR" ] && [ -d /tmp ] && TMPDIR="/tmp"
 
+installEmulator="$1"
+
 ANDROID_HOME="$HOME/.android/sdk"
 mkdir -p $ANDROID_HOME
 
@@ -15,7 +17,19 @@ cp -r $TMPDIR/cmdline-tools $ANDROID_HOME
 
 rm -rf $TMPDIR/cmdline-tools
 
-yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "build-tools;35.0.0" "cmake;3.31.1" "ndk;27.1.12297006" "platform-tools" "platforms;android-35"
+yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "build-tools;36.0.0" \
+                                                                  "cmake;4.1.1" \
+                                                                  "emulator" \
+                                                                  "ndk;28.2.13676358" \
+                                                                  "platform-tools" \
+                                                                  "platforms;android-36"
+
+if [ ! -z "$installEmulator" ]; then
+    yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "emulator" \
+                                                                      "system-images;android-36;google_apis;x86_64"
+fi
+
+yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
 
 url=$(curl -sfSL https://api.github.com/repos/iBotPeaches/Apktool/releases/latest | \
         jq -r ".assets[] | \

@@ -29,10 +29,11 @@ curl -sfSL https://go.ponces.dev/rbw | bash
 curl -sfSL https://go.ponces.dev/zsh | bash
 
 mise use --global dotnet@8.0
+mise use --global flutter@latest
 mise use --global gradle@8.6
 mise use --global java@17
 mise use --global node@20
-mise use --global rust
+mise use --global rust@latest
 
 eval "$($HOME/.local/bin/mise activate bash)"
 

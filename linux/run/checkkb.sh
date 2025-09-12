@@ -4,6 +4,8 @@ set -e
 
 [ -z "$TMPDIR" ] && [ -d /tmp ] && TMPDIR="/tmp"
 
+keybox="$1"
+
 tee $TMPDIR/checkKB.py >/dev/null << 'EOF'
 import requests
 import sys
@@ -38,7 +40,6 @@ else:
     print('\nKeybox is still valid!')
 EOF
 
-keybox="$1"
 
 if [ ! -f "$keybox" ]; then
     keybox="$TMPDIR/keybox.xml"

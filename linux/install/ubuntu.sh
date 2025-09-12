@@ -32,17 +32,18 @@ curl -sfSL https://go.ponces.dev/rbw | bash
 curl -sfSL https://go.ponces.dev/zsh | bash
 
 mise use --global dotnet@8.0
+mise use --global flutter@latest
 mise use --global gradle@8.6
-mise use --global helm
-mise use --global helmfile
+mise use --global helm@latest
+mise use --global helmfile@latest
 mise use --global java@17
-mise use --global kubectl
+mise use --global kubectl@latest
 mise use --global node@20
-mise use --global rust
+mise use --global rust@latest
 
 eval "$($HOME/.local/bin/mise activate bash)"
 
-curl -sfSL https://go.ponces.dev/android | bash
+curl -sfSL https://go.ponces.dev/android | bash -s -- "--emulator"
 
 res="$(cat /etc/X11/default-display-manager 2>/dev/null || echo '')"
 if [[ "$res" == "/usr/sbin/gdm3" ]]; then
