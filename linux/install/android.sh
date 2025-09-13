@@ -7,6 +7,8 @@ set -e
 installEmulator="$1"
 
 ANDROID_HOME="$HOME/.android/sdk"
+ANDROID_AVD_HOME="$HOME/.android/avd"
+
 mkdir -p $ANDROID_HOME
 
 curl -sfSL https://dl.google.com/android/repository/commandlinetools-linux-13114758_latest.zip -o $TMPDIR/sdk.zip
@@ -27,6 +29,9 @@ yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "build-tools;3
 if [ ! -z "$installEmulator" ]; then
     yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "emulator" \
                                                                       "system-images;android-36;google_apis;x86_64"
+    $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd --force --name "Pixel9" \
+                                                                         --device "pixel_9" --abi "google_apis/x86_64" \
+                                                                         --package "system-images;android-36;google_apis;x86_64"
 fi
 
 yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
