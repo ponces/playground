@@ -21,7 +21,6 @@ rm -rf $TMPDIR/cmdline-tools
 
 yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "build-tools;36.0.0" \
                                                                   "cmake;4.1.1" \
-                                                                  "emulator" \
                                                                   "ndk;28.2.13676358" \
                                                                   "platform-tools" \
                                                                   "platforms;android-36"

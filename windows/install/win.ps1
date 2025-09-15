@@ -24,6 +24,6 @@ if (-not (Test-Path $PROFILE)) {
     New-Item $PROFILE -Type File -ErrorAction Stop -Force | Out-Null
 }
 Add-Content -Path $PROFILE -Value "mise activate pwsh | Out-String | Invoke-Expression"
-Add-Content -Path $PROFILE -Value "function cgit() { cd $env:USERPROFILE\Git }"
-Add-Content -Path $PROFILE -Value "function cdown() { cd $env:USERPROFILE\Downloads }"
+Add-Content -Path $PROFILE -Value "function cgit() { cd `$env:USERPROFILE/Git }"
+Add-Content -Path $PROFILE -Value "function cdown() { cd `$env:USERPROFILE/Downloads }"
 Add-Content -Path $PROFILE -Value "function sshcode() { code --remote ssh-remote+ponces@ubuild01.ponces.dev @Args }"
