@@ -21,6 +21,7 @@ $SUDO apt-get install -y apache2-utils build-essential ca-certificates dnsutils 
 pipx install liblp payload_dumper yt-dlp
 
 curl -sfSL https://go.ponces.dev/aosp | bash
+curl -sfSL https://go.ponces.dev/azure | bash
 curl -sfSL https://go.ponces.dev/base | bash
 curl -sfSL https://go.ponces.dev/chezmoi | bash
 curl -sfSL https://go.ponces.dev/docker | bash
