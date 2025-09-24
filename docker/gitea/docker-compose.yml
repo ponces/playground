@@ -1,0 +1,23 @@
+services:
+  gitea:
+    image: docker.gitea.com/gitea:latest-rootless
+    container_name: gitea
+    restart: unless-stopped
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.gitea.rule=Host(`gitea.apps.ponces.dev`)"
+      - "traefik.http.routers.gitea.entrypoints=websecure"
+      - "traefik.http.routers.gitea.tls=true"
+      - "traefik.http.routers.gitea.tls.certresolver=cloudflare"
+      - "traefik.http.services.gitea.loadbalancer.server.port=3000"
+    volumes:
+      - ./data:/var/lib/gitea
+      - ./config:/etc/gitea
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+networks:
+  web:
+    external: true
