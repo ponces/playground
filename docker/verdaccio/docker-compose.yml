@@ -1,0 +1,25 @@
+services:
+  verdaccio:
+    image: verdaccio/verdaccio
+    container_name: verdaccio
+    restart: unless-stopped
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.verdaccio.rule=Host(`verdaccio.apps.ponces.dev`)"
+      - "traefik.http.routers.verdaccio.entrypoints=websecure"
+      - "traefik.http.routers.verdaccio.tls=true"
+      - "traefik.http.routers.verdaccio.tls.certresolver=cloudflare"
+      - "traefik.http.services.verdaccio.loadbalancer.server.port=4873"
+    volumes:
+      - ./config.yaml:/verdaccio/conf/config.yaml
+      - ./htpasswd:/verdaccio/conf/htpasswd
+      - verdaccio-storage:/verdaccio/storage
+
+volumes:
+  verdaccio-storage:
+
+networks:
+  web:
+    external: true

@@ -8,11 +8,15 @@ stop() {
     popd 1>/dev/null
 }
 
-stop traefik
 stop filebrowser
 stop github-runner
+# stop linux
+# stop macos
 # stop ollama
 stop portainer
 # stop technitium
+stop verdaccio
 # stop wg-easy
 # stop windows
+
+stop traefik

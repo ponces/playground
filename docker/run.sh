@@ -9,10 +9,14 @@ run() {
 }
 
 run traefik
+
 run filebrowser
 run github-runner
+# run linux
+# run macos
 # run ollama
 run portainer
 # run technitium
+run verdaccio
 # run wg-easy
 # run windows
