@@ -18,6 +18,10 @@ $SUDO apt-get upgrade -y
 $SUDO apt-get install -y apache2-utils build-essential ca-certificates dnsutils ffmpeg pipx python3 \
                          python3-dev python-is-python3 python3-pip python3-venv xdg-utils
 
+if [ ! -z "$WSL_DISTRO_NAME" ]; then
+    $SUDO apt-get install -y wslu xdg-utils
+fi
+
 pipx install liblp payload_dumper yt-dlp
 
 curl -sfSL https://go.ponces.dev/aosp | bash
