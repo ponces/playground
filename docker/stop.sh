@@ -9,6 +9,7 @@ stop() {
 }
 
 stop filebrowser
+stop gitea
 stop github-runner
 # stop linux
 # stop macos

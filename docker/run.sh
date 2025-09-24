@@ -11,6 +11,7 @@ run() {
 run traefik
 
 run filebrowser
+run gitea
 run github-runner
 # run linux
 # run macos
