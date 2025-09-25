@@ -16,11 +16,7 @@ export PATH="$HOME/.local/bin:$PATH"
 $SUDO apt-get update
 $SUDO apt-get upgrade -y
 $SUDO apt-get install -y apache2-utils build-essential ca-certificates dnsutils ffmpeg pipx python3 \
-                         python3-dev python-is-python3 python3-pip python3-venv xdg-utils
-
-if [ ! -z "$WSL_DISTRO_NAME" ]; then
-    $SUDO apt-get install -y wslu xdg-utils
-fi
+                         python3-dev python-is-python3 python3-pip python3-venv
 
 pipx install liblp payload_dumper yt-dlp
 
@@ -34,6 +30,7 @@ curl -sfSL https://go.ponces.dev/github | bash
 curl -sfSL https://go.ponces.dev/mise | bash
 curl -sfSL https://go.ponces.dev/piu | bash
 curl -sfSL https://go.ponces.dev/rbw | bash
+curl -sfSL https://go.ponces.dev/wsl | bash
 curl -sfSL https://go.ponces.dev/zsh | bash
 
 mise use --global dotnet@8.0
@@ -97,16 +94,4 @@ if [[ "$res" == "/usr/sbin/gdm3" ]]; then
                 head -1)
     curl -sfSL "$url" -o $TMPDIR/ferdium.deb
     $SUDO dpkg -i $TMPDIR/ferdium.deb
-fi
-
-if [ ! -z "$WSL_DISTRO_NAME" ]; then
-    if ! grep -q "systemd" /etc/wsl.conf; then
-        printf "\n[boot]\nsystemd = true\n" | $SUDO tee -a /etc/wsl.conf
-    fi
-    if ! grep -q "hostname" /etc/wsl.conf; then
-        printf "\n[network]\nhostname = ubuntu\n" | $SUDO tee -a /etc/wsl.conf
-    fi
-    if ! grep -q "default" /etc/wsl.conf; then
-        printf "\n[user]\ndefault = ponces\n" | $SUDO tee -a /etc/wsl.conf
-    fi
 fi
