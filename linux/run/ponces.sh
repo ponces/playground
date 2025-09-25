@@ -2,23 +2,26 @@
 
 set -e
 
+[ "$(id -u)" -ne 0 ] && SUDO="sudo" || SUDO=""
+
 user="ponces"
 pass="ponces"
 
-apt-get install -y sudo
+$SUDO apt-get update
+$SUDO apt-get install -y sudo
 
 if ! command -v useradd >/dev/null; then
-    addgroup "$user"
-    adduser "$user" --home "/home/$user" --gecos "$user" --ingroup "$user" --shell "/bin/bash"
+    $SUDO addgroup "$user"
+    $SUDO adduser "$user" --home "/home/$user" --gecos "$user" --ingroup "$user" --shell "/bin/bash"
 else
-    groupadd "$user"
-    useradd "$user" --create-home --home-dir "/home/$user" --gid "$user" --shell "/bin/bash"
+    $SUDO groupadd "$user"
+    $SUDO useradd "$user" --create-home --home-dir "/home/$user" --gid "$user" --shell "/bin/bash"
 fi
 
 echo $user:$pass | chpasswd
 
-adduser "$user" sudo
+$SUDO adduser "$user" sudo
 
 if [ -f /etc/wsl.conf ]; then
-    printf "[user]\ndefault = $user\n" >> /etc/wsl.conf
+    printf "[user]\ndefault = $user\n" | $SUDO tee -a /etc/wsl.conf
 fi
