@@ -2,6 +2,8 @@
 
 set -e
 
+export PATH="$HOME/.local/bin:$PATH"
+
 if [ ! -z "$TERMUX_VERSION" ]; then
     curl -sfSL https://mise.jdx.dev/mise-latest-linux-arm64-musl -o $HOME/.local/bin/mise
     chmod +x $HOME/.local/bin/mise
@@ -12,5 +14,7 @@ if [ ! -z "$TERMUX_VERSION" ]; then
     popd >/dev/null
 else
     curl -sfSL https://mise.run | bash
-    $HOME/.local/bin/mise settings experimental=true
 fi
+
+mise settings experimental=true
+mise settings add idiomatic_version_file_enable_tools "[]"
