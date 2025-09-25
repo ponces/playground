@@ -2,11 +2,13 @@
 
 set -e
 
+[ "$(id -u)" -ne 0 ] && SUDO="sudo" || SUDO=""
 [ -z "$TMPDIR" ] && [ -d /tmp ] && TMPDIR="/tmp"
 
 export PATH="$HOME/.local/bin:$PATH"
 
 if [ ! -z "$TERMUX_VERSION" ]; then
+    pkg install python
     pip install --user virtualenv
     virtualenv $HOME/.local/lib/azure-cli
     pushd $HOME/.local/lib/azure-cli >/dev/null
@@ -16,6 +18,8 @@ if [ ! -z "$TERMUX_VERSION" ]; then
     pip freeze > requirements.txt
     popd >/dev/null
 else
+    $SUDO apt-get update
+    $SUDO apt-get install -y pipx
     pipx install azure-cli
 fi
 
