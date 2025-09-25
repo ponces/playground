@@ -19,7 +19,7 @@ if [ ! -z "$TERMUX_VERSION" ]; then
     popd >/dev/null
 else
     $SUDO apt-get update
-    $SUDO apt-get install -y pipx
+    $SUDO apt-get install -y pipx python3-certifi
     pipx install azure-cli
 fi
 
