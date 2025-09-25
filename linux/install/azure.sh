@@ -28,6 +28,8 @@ az config set extension.dynamic_install_allow_preview=true
 az config set extension.use_dynamic_install=yes_without_prompt
 az extension add --name azure-devops
 
-mkdir -p $HOME/.local/share/azure-cli
-cp -f $(python3 -c "import certifi; print(certifi.where())") "$HOME/.local/share/azure-cli/ca-certificates.crt"
-curl -sfSL https://dev.criticalmanufacturing.io/repository/http/product/cmfca.pem >> "$HOME/.local/share/azure-cli/ca-certificates.crt"
+if ping -c 1 -W 1 dev.criticalmanufacturing.io &>/dev/null; then
+    mkdir -p $HOME/.local/share/azure-cli
+    cp -f $(python3 -c "import certifi; print(certifi.where())") "$HOME/.local/share/azure-cli/ca-certificates.crt"
+    curl -sfSL https://dev.criticalmanufacturing.io/repository/http/product/cmfca.pem >> "$HOME/.local/share/azure-cli/ca-certificates.crt"
+fi
