@@ -41,6 +41,7 @@ mise use --global helmfile@latest
 mise use --global java@17
 mise use --global kubectl@latest
 mise use --global node@20
+mise use --global oc@latest
 mise use --global rust@latest
 
 eval "$($HOME/.local/bin/mise activate bash)"

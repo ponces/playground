@@ -13,8 +13,12 @@ irm https://go.ponces.dev/pwsh | iex
 irm https://go.ponces.dev/surfshark | iex
 
 mise use --global gradle@8.6
+mise use --global helm@latest
+mise use --global helmfile@latest
 mise use --global java@17
+mise use --global kubectl@latest
 mise use --global node@20
+mise use --global oc@latest
 
 mise activate pwsh | Out-String | Invoke-Expression
 
