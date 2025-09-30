@@ -1,6 +1,6 @@
 services:
   verdaccio:
-    image: verdaccio/verdaccio:6.x-next
+    image: verdaccio/verdaccio
     container_name: verdaccio
     restart: unless-stopped
     networks:
