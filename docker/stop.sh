@@ -4,7 +4,7 @@ set -e
 
 stop() {
     pushd "$1" 1>/dev/null
-    docker compose down
+    docker compose stop
     popd 1>/dev/null
 }
 
