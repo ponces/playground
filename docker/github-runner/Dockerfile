@@ -10,8 +10,8 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y aapt android-sdk-libsparse-utils bash bc bison build-essential ca-certificates curl \
-                       dos2unix flex fontconfig fuse-overlayfs g++-multilib gcc-multilib git gnupg gperf \
+    apt-get install -y aapt android-sdk-libsparse-utils bash bc bison build-essential ca-certificates ccache \
+                       curl dos2unix flex fontconfig fuse-overlayfs g++-multilib gcc-multilib git gnupg gperf \
                        imagemagick iproute2 jq kmod lib32z1-dev libc6-dev-i386 libelf-dev libffi-dev \
                        libgl1-mesa-dev libicu-dev libkrb5-3 liblttng-ust1t64 libncurses-dev libssl-dev \
                        libstdc++6 libx11-dev libxml2-utils locales lunzip lzip lzop m4 make nano \
