@@ -11,12 +11,13 @@ run() {
 run traefik
 
 run filebrowser
-run gitea
+# run gitea
 run github-runner
 # run linux
 # run macos
 # run ollama
 run portainer
+run registry
 # run technitium
 run verdaccio
 # run wg-easy

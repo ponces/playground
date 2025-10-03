@@ -9,12 +9,13 @@ stop() {
 }
 
 stop filebrowser
-stop gitea
+# stop gitea
 stop github-runner
 # stop linux
 # stop macos
 # stop ollama
 stop portainer
+stop registry
 # stop technitium
 stop verdaccio
 # stop wg-easy

@@ -9,12 +9,13 @@ remove() {
 }
 
 remove filebrowser
-remove gitea
+# remove gitea
 remove github-runner
 # remove linux
 # remove macos
 # remove ollama
 remove portainer
+remove registry
 # remove technitium
 remove verdaccio
 # remove wg-easy
