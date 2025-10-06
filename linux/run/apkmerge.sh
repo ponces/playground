@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 [ -z "$TMPDIR" ] && [ -d /tmp ] && TMPDIR="/tmp"
 
@@ -28,6 +28,11 @@ elif [[ "$downFile" == *".apkm" ]] || [[ "$downFile" == *".xapk" ]]; then
     mv $TMPDIR/tmp.apk "$downFile"
     curl -sfSL https://go.ponces.dev/keystore -o $TMPDIR/debug.keystore
     apksigner sign --ks $TMPDIR/debug.keystore --ks-pass pass:android "$downFile"
+    rm -f "${downFile%.*}.apk.idsig"
+    if [ ! -f "$1" ]; then
+        rm -f "${downFile%.*}.apkm"
+        rm -f "${downFile%.*}.xapk"
+    fi
 else
     echo "No valid APK file found."
     exit 1
