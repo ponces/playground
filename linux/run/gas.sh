@@ -12,7 +12,7 @@ listPrices() {
     | map(.Preco = (.Preco | gsub(" €"; "") | gsub(","; ".") | tonumber))
     | map(select(.Distrito == $district and .Municipio == $city))
     | group_by(.Municipio)
-    | .[] | sort_by(.Preco)[:3][]
+    | .[] | sort_by(.Preco)[]
     | "Name:     \(.Nome)\nAddress:  \(.Morada)\nCity:     \($city)\nLocation: \($mapsUrl)\(.Latitude),\(.Longitude)\nPrice:    \(.Preco)€\n"')
     if [ ! -z "$res2" ]; then
         echo "$res2"
