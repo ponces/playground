@@ -28,7 +28,4 @@ elif [ ! -z "$1" ]; then
     listPrices "Porto" "$1"
 else
     listPrices "Porto" "Maia"
-    listPrices "Porto" "Matosinhos"
-    listPrices "Porto" "Porto"
-    listPrices "Porto" "Vila do Conde"
 fi
