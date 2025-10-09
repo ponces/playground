@@ -15,5 +15,6 @@ rm -f $TMPDIR/microsoft.deb
 $SUDO apt-get update
 $SUDO apt-get install -y powershell
 
-curl -sfSL https://dev.criticalmanufacturing.io/repository/http/product/cmfca.pem -o /usr/local/share/ca-certificates/cmfca.crt
+curl -sfSL https://dev.criticalmanufacturing.io/repository/http/product/cmfca.pem -o $TMPDIR/cmfca.crt
+$SUDO mv $TMPDIR/cmfca.crt /usr/local/share/ca-certificates/cmfca.crt
 $SUDO update-ca-certificates
