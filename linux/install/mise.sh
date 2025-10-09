@@ -18,3 +18,10 @@ fi
 
 mise settings experimental=true
 mise settings add idiomatic_version_file_enable_tools "[]"
+
+if [ ! -z "$WSL_DISTRO_NAME" ]; then
+    WIN_HOME=$(wslpath -u "$(wslvar USERPROFILE)")
+    if [ ! -z "$WIN_HOME" ]; then
+        mise trust --ignore "$WIN_HOME"
+    fi
+fi
