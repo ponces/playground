@@ -6,6 +6,11 @@ set -e
 
 keybox="$1"
 
+if [ -z "$keybox" ]; then
+    curl -sfSL "https://raw.githubusercontent.com/beakthoven/TrickyStoreOSS/refs/heads/main/module/keybox.xml" -o "$TMPDIR/keybox.xml"
+    keybox="$TMPDIR/keybox.xml"
+fi
+
 if [ ! -f "$keybox" ]; then
     keybox="$TMPDIR/keybox.xml"
     if [[ "$1" == "http"* ]]; then
