@@ -3,8 +3,13 @@
 set -e
 
 [ -z "$TMPDIR" ] && [ -d /tmp ] && TMPDIR="/tmp"
+[[ "$@" == *"--emulator"* ]] && installEmulator=true || installEmulator=false
 
-installEmulator="$1"
+if [ ! -z "$TERMUX_VERSION" ]; then
+    curl -sfSL https://raw.githubusercontent.com/rendiix/rendiix.github.io/master/install-repo.sh | bash
+    pkg install -y aapt aapt2 android-tools apksigner apktool zipalign
+    exit 0
+fi
 
 ANDROID_HOME="$HOME/.android/sdk"
 ANDROID_AVD_HOME="$HOME/.android/avd"
